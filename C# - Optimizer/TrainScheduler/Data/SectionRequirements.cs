@@ -1,6 +1,6 @@
 ﻿namespace TrainScheduler.Data
 {
-    internal class SectionRequirements
+    public class SectionRequirements
     {
     }
 }

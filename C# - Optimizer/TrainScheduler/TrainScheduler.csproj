@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Duration.cs" />
-    <Compile Include="Data\Parameters.cs" />
+    <Compile Include="Data\ISerializable.cs" />
     <Compile Include="Data\ProblemInstance.cs" />
     <Compile Include="Data\Resource.cs" />
     <Compile Include="Data\Route.cs" />

@@ -14,6 +14,9 @@ namespace TrainScheduler.Data
     {
         public ProblemInstance()
         {
+            ServiceIntentions = new List<ServiceIntention>();
+            Routes = new List<Route>();
+            Resources = new List<Resource>();
         }
 
         public ProblemInstance(string label, int hash) : this()
@@ -29,25 +32,28 @@ namespace TrainScheduler.Data
         public int Hash { get; private set; }
 
         [DataMember(Name ="service_intentions", Order =3)]
-        public ServiceIntention[] serviceIntentions { get; private set; }
+        public List<ServiceIntention> ServiceIntentions { get; private set; }
 
-        [DataMember(Order =4)]
-        public Route[] routes { get; private set; }
+        [DataMember(Name="routes", Order =4)]
+        public List<Route> Routes { get; private set; }
 
-        [DataMember(Order =5)]
-        public Resource[] resources { get; private set; }
+        [DataMember(Name="resources", Order =5)]
+        public List<Resource> Resources { get; private set; }
 
-        [DataMember(Order = 6)]
-        public Parameters parameters { get; private set; }
-
-        public static ProblemInstance FromJson(string json)
+        protected override void CopyFrom(object other)
         {
-            var res = new ProblemInstance();
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(res.GetType());
-            res = ser.ReadObject(ms) as ProblemInstance;
-            ms.Close();
-            return res;
+            if(other is ProblemInstance src)
+            {
+                Label = src.Label;
+                Hash = src.Hash;
+                ServiceIntentions = src.ServiceIntentions;
+                Routes = src.Routes;
+                Resources = src.Resources;
+            }
+            else
+            {
+                throw new InvalidCastException($"Cannot copy from type {other.GetType().ToString()} to {this.GetType().ToString()}");
+            }
         }
     }
 }
