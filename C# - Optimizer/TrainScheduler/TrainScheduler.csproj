@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Duration.cs" />
+    <Compile Include="Data\Parameters.cs" />
+    <Compile Include="Data\ProblemInstance.cs" />
+    <Compile Include="Data\Resource.cs" />
+    <Compile Include="Data\Route.cs" />
+    <Compile Include="Data\SectionRequirements.cs" />
+    <Compile Include="Data\Serializable.cs" />
+    <Compile Include="Data\ServiceIntention.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,14 +83,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Samples\sample_scenario.json" />
+    <None Include="Samples\sample_scenario_solution.json" />
+    <None Include="Samples\sample_scenario_solution_delayed_arrival.json" />
+    <None Include="Samples\sample_scenario_solution_early_entry.json" />
+    <None Include="Samples\sample_scenario_solution_initial_times.json" />
+    <None Include="Samples\sample_scenario_solution_warningHash.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Resources\" />
-    <Folder Include="Samples\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
