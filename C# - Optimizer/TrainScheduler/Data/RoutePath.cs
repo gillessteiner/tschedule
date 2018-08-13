@@ -5,25 +5,25 @@ using System.Runtime.Serialization;
 namespace TrainScheduler.Data
 {
     [DataContract]
-    public class Route : Serializable
+    public class RoutePath : Serializable
     {
-        public Route()
+        public RoutePath()
         {
-            RoutePaths = new List<RoutePath>();
+            RouteSections = new List<RouteSection>();
         }
 
         [DataMember(Name = "id")]
         public int Id { get; private set; }
 
-        [DataMember(Name = "route_paths")]
-        public List<RoutePath> RoutePaths { get; private set; }
+        [DataMember(Name = "route_sections")]
+        public List<RouteSection> RouteSections { get; private set; }
 
         protected override void CopyFrom(object other)
         {
-            if (other is Route src)
+            if (other is RoutePath src)
             {
                 Id = src.Id;
-                RoutePaths = src.RoutePaths;
+                RouteSections = src.RouteSections;
             }
             else
             {

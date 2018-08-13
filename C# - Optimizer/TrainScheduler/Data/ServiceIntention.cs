@@ -10,7 +10,7 @@ namespace TrainScheduler.Data
     {
         public ServiceIntention()
         {
-            SectionRequirements = new List<SectionRequirements>();
+            SectionRequirements = new List<SectionRequirement>();
         }
         public ServiceIntention(int id, int route)
         {
@@ -25,7 +25,7 @@ namespace TrainScheduler.Data
         public int Route { get; private set; }
 
         [DataMember(Name = "section_requirements")]
-        public List<SectionRequirements> SectionRequirements { get; private set; }
+        public List<SectionRequirement> SectionRequirements { get; private set; }
 
         protected override void CopyFrom(object other)
         {

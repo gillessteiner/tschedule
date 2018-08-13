@@ -46,12 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Connection.cs" />
     <Compile Include="Data\Duration.cs" />
     <Compile Include="Data\ISerializable.cs" />
     <Compile Include="Data\ProblemInstance.cs" />
     <Compile Include="Data\Resource.cs" />
+    <Compile Include="Data\ResourceOccupation.cs" />
     <Compile Include="Data\Route.cs" />
-    <Compile Include="Data\SectionRequirements.cs" />
+    <Compile Include="Data\RoutePath.cs" />
+    <Compile Include="Data\RouteSection.cs" />
+    <Compile Include="Data\SectionRequirement.cs" />
     <Compile Include="Data\Serializable.cs" />
     <Compile Include="Data\ServiceIntention.cs" />
     <Compile Include="MainForm.cs">

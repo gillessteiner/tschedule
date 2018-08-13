@@ -27,7 +27,7 @@ namespace TrainScheduler.Data
         public string ToJson()
         {
             var ms = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(this.GetType());
+            var ser = new DataContractJsonSerializer(this.GetType());
             ser.WriteObject(ms, this);
             byte[] json = ms.ToArray();
             ms.Close();
