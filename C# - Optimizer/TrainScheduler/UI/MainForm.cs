@@ -16,18 +16,18 @@ namespace TrainScheduler.UI
         {
             get
             {
-                if (currentProblem == null)
+                if (CurrentProblem == null)
                     return true;
 
                 
-                return (MessageBox.Show("An problem is currently loaded, are you sure you want to quit?",
+                return (MessageBox.Show("A problem is currently loaded, are you sure you want to quit?",
                             "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) ==
                         DialogResult.Yes);
             }
         }
 
-        private ProblemInstance currentProblem;
-        private Solution currentSolution;
+        internal static ProblemInstance CurrentProblem;
+        internal static Solution CurrentSolution;
 
         private void openProblemToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
@@ -39,9 +39,11 @@ namespace TrainScheduler.UI
             {
                 try
                 {
-                    currentProblem = new ProblemInstance();
-                    currentProblem.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
-                    problemSolutionView.CurrentProblem = currentProblem;
+                    CurrentProblem = new ProblemInstance();
+                    CurrentProblem.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
+                    problemView.Setup();
+                    solverView.Setup();
+                    
                 }
                 catch (Exception ex)
                 {
@@ -62,7 +64,5 @@ namespace TrainScheduler.UI
                 this.Close();
             }
         }
-
-        
     }
 }

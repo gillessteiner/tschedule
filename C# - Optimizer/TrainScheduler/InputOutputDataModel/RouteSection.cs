@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace TrainScheduler.InputOutputDataModel
@@ -21,8 +22,20 @@ namespace TrainScheduler.InputOutputDataModel
         [DataMember(Name = "penalty", Order = 2)]
         public double? Penalty { get; private set; }
 
+        [IgnoreDataMember]
+        public string AlternativeMarkerAtEntry =>
+            (RouteAlternativeMarkersAtEntry != null && RouteAlternativeMarkersAtEntry.Any())
+                ? RouteAlternativeMarkersAtEntry[0]
+                : null;
+
         [DataMember(Name = "route_alternative_marker_at_entry", Order = 3)]
         public List<string> RouteAlternativeMarkersAtEntry { get; private set; }
+
+        [IgnoreDataMember]
+        public string AlternativeMarkerAtExit =>
+            (RouteAlternativeMarkersAtExit != null && RouteAlternativeMarkersAtExit.Any())
+                ? RouteAlternativeMarkersAtExit[0]
+                : null;
 
         [DataMember(Name = "route_alternative_marker_at_exit", Order = 4)]
         public List<string> RouteAlternativeMarkersAtExit { get; private set; }

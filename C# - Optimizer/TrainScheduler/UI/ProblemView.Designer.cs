@@ -1,0 +1,241 @@
+﻿namespace TrainScheduler.UI
+{
+    partial class ProblemView
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProblemView));
+            this.txtNbResources = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNbRoutes = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNbTrains = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHash = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grpGraph = new System.Windows.Forms.GroupBox();
+            this.panGraphViewContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cboRouteSelection = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.grpDefinition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpGraph.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // grpProblem
+            // 
+            this.grpDefinition.Controls.Add(this.txtNbResources);
+            this.grpDefinition.Controls.Add(this.label5);
+            this.grpDefinition.Controls.Add(this.txtNbRoutes);
+            this.grpDefinition.Controls.Add(this.label4);
+            this.grpDefinition.Controls.Add(this.txtNbTrains);
+            this.grpDefinition.Controls.Add(this.label3);
+            this.grpDefinition.Controls.Add(this.txtHash);
+            this.grpDefinition.Controls.Add(this.label2);
+            this.grpDefinition.Size = new System.Drawing.Size(670, 204);
+            this.grpDefinition.TabIndex = 0;
+            this.grpDefinition.Controls.SetChildIndex(this.label2, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtHash, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.label3, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtNbTrains, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.label4, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtNbRoutes, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.label5, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtNbResources, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.labPb, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.label1, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtLabel, 0);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            // 
+            // txtNbResources
+            // 
+            this.txtNbResources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNbResources.Location = new System.Drawing.Point(155, 160);
+            this.txtNbResources.Name = "txtNbResources";
+            this.txtNbResources.ReadOnly = true;
+            this.txtNbResources.Size = new System.Drawing.Size(496, 22);
+            this.txtNbResources.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(65, 163);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 17);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Resources :";
+            // 
+            // txtNbRoutes
+            // 
+            this.txtNbRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNbRoutes.Location = new System.Drawing.Point(155, 128);
+            this.txtNbRoutes.Name = "txtNbRoutes";
+            this.txtNbRoutes.ReadOnly = true;
+            this.txtNbRoutes.Size = new System.Drawing.Size(496, 22);
+            this.txtNbRoutes.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(88, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Routes :";
+            // 
+            // txtNbTrains
+            // 
+            this.txtNbTrains.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNbTrains.Location = new System.Drawing.Point(155, 96);
+            this.txtNbTrains.Name = "txtNbTrains";
+            this.txtNbTrains.ReadOnly = true;
+            this.txtNbTrains.Size = new System.Drawing.Size(496, 22);
+            this.txtNbTrains.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(93, 99);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 17);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Trains :";
+            // 
+            // txtHash
+            // 
+            this.txtHash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHash.Location = new System.Drawing.Point(155, 64);
+            this.txtHash.Name = "txtHash";
+            this.txtHash.ReadOnly = true;
+            this.txtHash.Size = new System.Drawing.Size(496, 22);
+            this.txtHash.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(100, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Hash :";
+            // 
+            // grpGraph
+            // 
+            this.grpGraph.Controls.Add(this.panGraphViewContainer);
+            this.grpGraph.Controls.Add(this.panel1);
+            this.grpGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpGraph.Enabled = false;
+            this.grpGraph.Location = new System.Drawing.Point(0, 204);
+            this.grpGraph.Name = "grpGraph";
+            this.grpGraph.Size = new System.Drawing.Size(670, 304);
+            this.grpGraph.TabIndex = 1;
+            this.grpGraph.TabStop = false;
+            this.grpGraph.Text = "Graph";
+            // 
+            // panGraphViewContainer
+            // 
+            this.panGraphViewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panGraphViewContainer.Location = new System.Drawing.Point(3, 52);
+            this.panGraphViewContainer.Name = "panGraphViewContainer";
+            this.panGraphViewContainer.Size = new System.Drawing.Size(664, 249);
+            this.panGraphViewContainer.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cboRouteSelection);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(664, 34);
+            this.panel1.TabIndex = 0;
+            // 
+            // cboRouteSelection
+            // 
+            this.cboRouteSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRouteSelection.FormattingEnabled = true;
+            this.cboRouteSelection.Location = new System.Drawing.Point(97, 5);
+            this.cboRouteSelection.Name = "cboRouteSelection";
+            this.cboRouteSelection.Size = new System.Drawing.Size(229, 24);
+            this.cboRouteSelection.TabIndex = 22;
+            this.cboRouteSelection.SelectionChangeCommitted += new System.EventHandler(this.cboRouteSelection_SelectionChangeCommitted);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 17);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Show route:";
+            // 
+            // ProblemView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpGraph);
+            this.Name = "ProblemView";
+            this.Size = new System.Drawing.Size(670, 508);
+            this.Controls.SetChildIndex(this.grpDefinition, 0);
+            this.Controls.SetChildIndex(this.grpGraph, 0);
+            this.grpDefinition.ResumeLayout(false);
+            this.grpDefinition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpGraph.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox txtNbResources;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNbRoutes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNbTrains;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtHash;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox grpGraph;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cboRouteSelection;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panGraphViewContainer;
+    }
+}

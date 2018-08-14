@@ -29,7 +29,7 @@ namespace TrainScheduler.Data
         public double? Penalty => RouteSection?.Penalty;
         public TimeSpan MinimumRunningTime => RouteSection?.MinimumRunningTime ?? TimeSpan.Zero;
 
-        public string SectionMarker => (RouteSection != null && RouteSection.SectionMarkers.Any())
+        public string SectionMarker => (RouteSection?.SectionMarkers != null && RouteSection.SectionMarkers.Any())
             ? RouteSection.SectionMarkers[0]
             : null;
     }

@@ -38,11 +38,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProblem = new System.Windows.Forms.TabPage();
             this.tabSolver = new System.Windows.Forms.TabPage();
+            this.tabSolution = new System.Windows.Forms.TabPage();
             this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.problemSolutionView = new TrainScheduler.UI.ProblemSolutionView();
+            this.problemView = new TrainScheduler.UI.ProblemView();
+            this.solverView = new TrainScheduler.UI.SolverView();
+            this.solutionView1 = new TrainScheduler.UI.SolutionView();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabProblem.SuspendLayout();
+            this.tabSolver.SuspendLayout();
+            this.tabSolution.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -100,6 +105,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabProblem);
             this.tabControl1.Controls.Add(this.tabSolver);
+            this.tabControl1.Controls.Add(this.tabSolution);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
@@ -109,7 +115,7 @@
             // 
             // tabProblem
             // 
-            this.tabProblem.Controls.Add(this.problemSolutionView);
+            this.tabProblem.Controls.Add(this.problemView);
             this.tabProblem.Location = new System.Drawing.Point(4, 25);
             this.tabProblem.Name = "tabProblem";
             this.tabProblem.Padding = new System.Windows.Forms.Padding(3);
@@ -120,6 +126,7 @@
             // 
             // tabSolver
             // 
+            this.tabSolver.Controls.Add(this.solverView);
             this.tabSolver.Location = new System.Drawing.Point(4, 25);
             this.tabSolver.Name = "tabSolver";
             this.tabSolver.Padding = new System.Windows.Forms.Padding(3);
@@ -128,18 +135,44 @@
             this.tabSolver.Text = "Solver";
             this.tabSolver.UseVisualStyleBackColor = true;
             // 
-            // problemSolutionView
+            // tabSolution
             // 
-            this.problemSolutionView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.problemSolutionView.Location = new System.Drawing.Point(3, 3);
-            this.problemSolutionView.Name = "problemSolutionView";
-            this.problemSolutionView.Size = new System.Drawing.Size(714, 431);
-            this.problemSolutionView.TabIndex = 0;
+            this.tabSolution.Controls.Add(this.solutionView1);
+            this.tabSolution.Location = new System.Drawing.Point(4, 25);
+            this.tabSolution.Name = "tabSolution";
+            this.tabSolution.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSolution.Size = new System.Drawing.Size(720, 437);
+            this.tabSolution.TabIndex = 2;
+            this.tabSolution.Text = "Solution";
+            this.tabSolution.UseVisualStyleBackColor = true;
+            // 
+            // problemView
+            // 
+            this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.problemView.Location = new System.Drawing.Point(3, 3);
+            this.problemView.Name = "problemView";
+            this.problemView.Size = new System.Drawing.Size(714, 431);
+            this.problemView.TabIndex = 0;
+            // 
+            // solverView
+            // 
+            this.solverView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solverView.Location = new System.Drawing.Point(3, 3);
+            this.solverView.Name = "solverView";
+            this.solverView.Size = new System.Drawing.Size(714, 431);
+            this.solverView.TabIndex = 0;
+            // 
+            // solutionView1
+            // 
+            this.solutionView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solutionView1.Location = new System.Drawing.Point(3, 3);
+            this.solutionView1.Name = "solutionView1";
+            this.solutionView1.Size = new System.Drawing.Size(714, 431);
+            this.solutionView1.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(728, 494);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
@@ -151,6 +184,8 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabProblem.ResumeLayout(false);
+            this.tabSolver.ResumeLayout(false);
+            this.tabSolution.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +203,10 @@
         private System.Windows.Forms.TabPage tabProblem;
         private System.Windows.Forms.TabPage tabSolver;
         private System.Windows.Forms.OpenFileDialog openJsonFileDialog;
-        private ProblemSolutionView problemSolutionView;
+        private ProblemView problemView;
+        private System.Windows.Forms.TabPage tabSolution;
+        private SolverView solverView;
+        private SolutionView solutionView1;
     }
 }
 

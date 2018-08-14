@@ -15,8 +15,8 @@ namespace TrainScheduler.Data
 
         public string Marker { get; private set; }
 
-        public Dictionary<int, SectionEdge> InputEdges  = new Dictionary<int, SectionEdge>();
-        public Dictionary<int, SectionEdge> OutputEdges = new Dictionary<int, SectionEdge>();
+        public List<SectionEdge> InputEdges  = new List<SectionEdge>();
+        public List<SectionEdge> OutputEdges = new List<SectionEdge>();
 
         public enum EdgeType { Input, Output }
 
@@ -24,11 +24,11 @@ namespace TrainScheduler.Data
         {
             if (type == EdgeType.Input)
             {
-                InputEdges.Add(edge.SequenceNumber, edge);
+                InputEdges.Add(edge);
             }
             else
             {
-                OutputEdges.Add(edge.SequenceNumber, edge);
+                OutputEdges.Add(edge);
             }
         }
     }
