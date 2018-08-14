@@ -34,11 +34,14 @@
             // txtArea
             // 
             this.txtArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtArea.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtArea.Location = new System.Drawing.Point(0, 0);
             this.txtArea.Name = "txtArea";
+            this.txtArea.ReadOnly = true;
             this.txtArea.Size = new System.Drawing.Size(689, 483);
             this.txtArea.TabIndex = 0;
             this.txtArea.Text = "";
+            this.txtArea.WordWrap = false;
             // 
             // LogView
             // 

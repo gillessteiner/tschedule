@@ -28,6 +28,8 @@ namespace TrainScheduler.Data
         public int SequenceNumber => RouteSection?.SequenceNumber ?? 0;
         public double? Penalty => RouteSection?.Penalty;
         public TimeSpan MinimumRunningTime => RouteSection?.MinimumRunningTime ?? TimeSpan.Zero;
+        public int NbResourcesOccupied => RouteSection?.ResourceOccupations?.Count ?? 0;
+
 
         public string SectionMarker => (RouteSection?.SectionMarkers != null && RouteSection.SectionMarkers.Any())
             ? RouteSection.SectionMarkers[0]

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Msagl.Drawing;
 using TrainScheduler.InputOutputDataModel;
 using Microsoft.Msagl.GraphViewerGdi;
-using TrainScheduler.Data;
+using Graph = TrainScheduler.Data.Graph;
 
 namespace TrainScheduler.UI
 {
@@ -60,9 +61,37 @@ namespace TrainScheduler.UI
             var key = (string)cboRouteSelection.SelectedItem;
             if (_routes.ContainsKey(key))
             {
+                txtNbPossiblePaths.Text = _routes[key].PossiblePathsOrderedByPenalty.Length.ToString("##,###");
                 _graphViewer.SuspendLayout();
                 _graphViewer.Graph = _routes[key].MSGraph;
                 _graphViewer.ResumeLayout();
+
+                cboPathSelection.Items.Clear();
+                for(int i=0; i < _routes[key].PossiblePathsOrderedByPenalty.Length; ++i)
+                    cboPathSelection.Items.Add(i);
+            }
+        }
+
+        private void cboPathSelection_SelectionChangeCommitted(object sender, System.EventArgs e)
+        {
+            var routeKey = (string)cboRouteSelection.SelectedItem;
+            var pathKey = (int) cboPathSelection.SelectedItem;
+
+            if (_routes.ContainsKey(routeKey))
+            {
+                _graphViewer.SuspendLayout();
+                foreach (var edge in _graphViewer.Graph.Edges)
+                {
+                    edge.Attr.Color = Color.Black;
+                }
+
+                foreach (var edge in _routes[routeKey].PossiblePathsOrderedByPenalty[pathKey].Sections)
+                {
+                    _graphViewer.Graph.EdgeById(edge.SequenceNumber.ToString()).Attr.Color = Color.Red;
+                }
+                _graphViewer.Refresh();
+                _graphViewer.ResumeLayout();
+
             }
         }
     }

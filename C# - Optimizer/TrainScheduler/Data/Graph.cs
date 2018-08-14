@@ -43,6 +43,8 @@ namespace TrainScheduler.Data
             }
 
             BuildMSGraph();
+
+            FindPossiblePaths();
         }
 
         private (string entryId, string exitId) CreateEntryExitNodes(RouteSection section, string pathId, int ind)
@@ -68,19 +70,21 @@ namespace TrainScheduler.Data
 
             foreach (var e in _edges)
             {
-                _msGraph.AddEdge(e.Entry.Marker, e.SectionMarker, e.Exit.Marker);
+                var edge = _msGraph.AddEdge(e.Entry.Marker, e.SectionMarker, e.Exit.Marker);
+                edge.Attr.Id = e.SequenceNumber.ToString();
             }
         }
 
+        public PossiblePath[] PossiblePathsOrderedByPenalty { get; private set; }
 
         /// <summary>
         /// Given a graph, find the list of possible paths for a train
         /// </summary>
-        public void FindPossiblePaths()
+        private void FindPossiblePaths()
         {
             var activePaths = LeftNodes.Select(n=> new PossiblePath(n)).ToList();
-            List<PossiblePath> newPath = new List<PossiblePath>();
-            bool allPathsFinished = true;
+            var newPath = new List<PossiblePath>();
+            var allPathsFinished = true;
             do
             {
                 allPathsFinished = true;
@@ -103,6 +107,8 @@ namespace TrainScheduler.Data
                 }
 
             } while (newPath.Any() || !allPathsFinished);
+
+            PossiblePathsOrderedByPenalty = activePaths.OrderBy(p => p.Penalty).ThenBy(p => p.NbResourcesOccupied).ToArray();
         }
     }
 }

@@ -61,5 +61,10 @@ namespace TrainScheduler.UI
             else
                 Write(msg, Color.Gray);
         }
+
+        public void Clear()
+        {
+            txtArea.Clear();
+        }
     }
 }
