@@ -14,22 +14,26 @@ namespace TrainScheduler.Data
             Problem = problem;
             TrainRuns = Problem.ServiceIntentions.Select(t => new TrainRun(t, Problem.RouteDic[t.Route])).ToArray();
             TrainRunsDic = TrainRuns.ToDictionary(tr => tr.ServiceIntentionId, tr => tr);
+
+            ProblemLabel = Problem?.Label;
+            ProblemHash = Problem?.Hash ?? 0;
         }
 
         #region SBB Data Model
         [DataMember(Name = "problem_instance_label", Order = 1)]
-        public string ProblemLabel => Problem?.Label;
+        private string ProblemLabel { get; set; }
 
         [DataMember(Name = "problem_instance_hash", Order = 2)]
-        public int ProblemHash => Problem?.Hash ?? 0;
+        private int ProblemHash { get; set; }
 
         [DataMember(Name = "hash", Order = 3)]
-        public int Hash => 101;
+        public int Hash { get; private set; } = 101;
 
         [DataMember(Name = "train_runs", Order = 4)]
         private TrainRun[] TrainRuns { get; set; }
         #endregion
 
+        [IgnoreDataMember]
         public Dictionary<string, TrainRun> TrainRunsDic { get; private set; }
 
         [IgnoreDataMember]
@@ -41,6 +45,7 @@ namespace TrainScheduler.Data
         [IgnoreDataMember]
         public bool IsOptimal => Math.Abs(ObjectiveValue) < 1e-10;
 
+        [IgnoreDataMember]
         public double ObjectiveValue => 1.0;
 
         public string Validate()
@@ -70,9 +75,9 @@ namespace TrainScheduler.Data
                 {
                     if (Problem.RouteDic.ContainsKey(section.RouteId))
                     {
-                        if (Problem.RouteDic[section.RouteId].RoutePathDic.ContainsKey(section.RoutePathId))
+                        if (Problem.RouteDic[section.RouteId].RoutePathsDic.ContainsKey(section.RoutePathId))
                         {
-                            if (!Problem.RouteDic[section.RouteId].RoutePathDic[section.RoutePathId].RouteSectionDic
+                            if (!Problem.RouteDic[section.RouteId].RoutePathsDic[section.RoutePathId].RouteSectionDic
                                 .ContainsKey(section.SequenceNumber))
                             {
                                 IsAdmissible = false;
@@ -127,9 +132,5 @@ namespace TrainScheduler.Data
 
             return true;
         }
-
-      
-
-
     }
 }

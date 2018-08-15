@@ -14,11 +14,24 @@ namespace TrainScheduler.Data
         }
 
         #region SBB Data Model
-        [DataMember(Name = "id")]
-        public string Id { get; private set; }
+
+        [DataMember(Name = "id")] public string Id { get; private set; }
+
+        [IgnoreDataMember] private List<RoutePath> _routePaths;
 
         [DataMember(Name = "route_paths")]
-        public List<RoutePath> RoutePaths { get; private set; }
+        public List<RoutePath> RoutePaths
+        {
+            get => _routePaths;
+            private set
+            {
+                _routePaths = value;
+                RoutePathsDic = _routePaths.ToDictionary(r => r.Id);
+            }
+        }
+
+        [IgnoreDataMember] public Dictionary<string, RoutePath> RoutePathsDic { get; private set; }
+
         #endregion
 
         protected override void CopyFrom(object other)
@@ -27,25 +40,19 @@ namespace TrainScheduler.Data
             {
                 Id = src.Id;
                 RoutePaths = src.RoutePaths;
-                OrganizeInDictionaries();
             }
             else
             {
-                throw new InvalidCastException($"Cannot copy from type {other.GetType().ToString()} to {this.GetType().ToString()}");
+                throw new InvalidCastException(
+                    $"Cannot copy from type {other.GetType().ToString()} to {this.GetType().ToString()}");
             }
         }
 
-        [IgnoreDataMember]
-        public Graph Graph { get; private set; }
+        [IgnoreDataMember] public Graph Graph { get; private set; }
 
-        public void CreateGraph() { Graph = new Graph(this);}
-
-        private void OrganizeInDictionaries()
+        public void CreateGraph()
         {
-            RoutePathDic = RoutePaths.ToDictionary(p =>p.Id, p => p);
+            Graph = new Graph(this);
         }
-
-        [IgnoreDataMember]
-        public Dictionary<string, RoutePath> RoutePathDic { get; private set; }
     }
 }

@@ -43,6 +43,7 @@
             this.tabSolution = new System.Windows.Forms.TabPage();
             this.solutionView = new TrainScheduler.UI.SolutionView();
             this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveJsonFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabProblem.SuspendLayout();
@@ -208,6 +209,7 @@
         private System.Windows.Forms.TabPage tabSolution;
         private SolverView solverView;
         private SolutionView solutionView;
+        private System.Windows.Forms.SaveFileDialog saveJsonFileDialog;
     }
 }
 

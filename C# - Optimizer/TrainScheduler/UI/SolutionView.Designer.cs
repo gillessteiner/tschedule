@@ -37,6 +37,7 @@
             this.txtNbTrains = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtObjValue = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.grpDefinition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpGraph.SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             // grpDefinition
             // 
+            this.grpDefinition.Controls.Add(this.btnSave);
             this.grpDefinition.Controls.Add(this.txtObjValue);
             this.grpDefinition.Controls.Add(this.label2);
             this.grpDefinition.Controls.SetChildIndex(this.pictureBox1, 0);
@@ -53,6 +55,7 @@
             this.grpDefinition.Controls.SetChildIndex(this.txtLabel, 0);
             this.grpDefinition.Controls.SetChildIndex(this.label2, 0);
             this.grpDefinition.Controls.SetChildIndex(this.txtObjValue, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.btnSave, 0);
             // 
             // labPb
             // 
@@ -141,6 +144,17 @@
             this.txtObjValue.Size = new System.Drawing.Size(496, 22);
             this.txtObjValue.TabIndex = 17;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(155, 96);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(168, 31);
+            this.btnSave.TabIndex = 24;
+            this.btnSave.Text = "Save solution ...";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // SolutionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -169,5 +183,6 @@
         private System.Windows.Forms.TextBox txtNbTrains;
         private System.Windows.Forms.TextBox txtObjValue;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSave;
     }
 }

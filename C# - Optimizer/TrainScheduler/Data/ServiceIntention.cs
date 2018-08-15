@@ -13,18 +13,25 @@ namespace TrainScheduler.Data
             SectionRequirements = new List<SectionRequirement>();
         }
 
-        public ServiceIntention(string id, string route)
-        {
-            Id = id;
-            Route = route;
-        }
-
         [DataMember(Name = "id")] public string Id { get; private set; }
 
         [DataMember(Name = "route")] public string Route { get; private set; }
 
+        [IgnoreDataMember] private List<SectionRequirement> _sectionRequirements;
+
         [DataMember(Name = "section_requirements")]
-        public List<SectionRequirement> SectionRequirements { get; private set; }
+        public List<SectionRequirement> SectionRequirements
+        {
+            get => _sectionRequirements;
+            private set
+            {
+                _sectionRequirements = value;
+                SectionRequirementsMarkers = new HashSet<string>(_sectionRequirements.Select(sr => sr.SectionMarker));
+            }
+
+        }
+
+        [IgnoreDataMember] public HashSet<string> SectionRequirementsMarkers { get; private set; }
 
         protected override void CopyFrom(object other)
         {
@@ -33,8 +40,6 @@ namespace TrainScheduler.Data
                 Id = src.Id;
                 Route = src.Route;
                 SectionRequirements = src.SectionRequirements;
-
-                OrganizeInDictionaries();
             }
             else
             {
@@ -42,12 +47,5 @@ namespace TrainScheduler.Data
                     $"Cannot copy from type {other.GetType().ToString()} to {this.GetType().ToString()}");
             }
         }
-
-        private void OrganizeInDictionaries()
-        {
-            SectionRequirementsMarkers = new HashSet<string>(SectionRequirements.Select(sr => sr.SectionMarker));
-        }
-
-        [IgnoreDataMember] public HashSet<string> SectionRequirementsMarkers { get; private set; }
     }
 }

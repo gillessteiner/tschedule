@@ -22,12 +22,16 @@ namespace TrainScheduler.Data
         private Route Route { get; set; }
         
         [DataMember(Name = "service_intention_id", Order = 1)]
-        public string ServiceIntentionId => Train.Id;
+        public string ServiceIntentionId
+        {
+            get => Train.Id;
+            private set { /* ignore setter */ }
+        }
 
         [DataMember(Name = "train_run_sections", Order = 2)]
         public List<TrainRunSection> TrainRunSections { get; private set; }
 
-        public bool IsPathSelected => _selectedPathIndex < 0;
+        public bool IsPathSelected => _selectedPathIndex >= 0;
 
         [IgnoreDataMember]
         private int _selectedPathIndex = -1;
@@ -39,9 +43,12 @@ namespace TrainScheduler.Data
                 TrainRunSections = Route.Graph.PossiblePathsOrderedByPenalty[_selectedPathIndex].Sections.Select(sec => new TrainRunSection(Route, Train, sec)).ToList();
             }
         }
-
+        [IgnoreDataMember]
         private Microsoft.Msagl.Drawing.Graph _msGraph;
+
+        [IgnoreDataMember]
         public Microsoft.Msagl.Drawing.Graph MSGraph => _msGraph;
+
         public void CreateGraph()
         {
             _msGraph = new Microsoft.Msagl.Drawing.Graph($"solution_graph")

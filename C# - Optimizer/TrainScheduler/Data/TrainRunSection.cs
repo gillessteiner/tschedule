@@ -6,18 +6,27 @@ namespace TrainScheduler.Data
     [DataContract]
     public class TrainRunSection : Serializable
     {
-        public TrainRunSection(Route route, ServiceIntention train, SectionEdge section )
+        public TrainRunSection(Route route, ServiceIntention train, SectionEdge section)
         {
             RouteId = route.Id;
             RoutePathId = section.RoutePath;
             SequenceNumber = section.SequenceNumber;
+            if(train.SectionRequirements != null)
+                SectionRequirement = train.SectionRequirementsMarkers.Contains(section.SectionMarker)
+                    ? section.SectionMarker
+                    : null;
         }
-       
-        [DataMember(Name="route", Order=3)]
+
+        [DataMember(Name = "route", Order = 3)]
         public string RouteId { get; private set; }
 
         [DataMember(Name = "route_section_id", Order = 4)]
-        public string RouteSectionId => $"{RouteId}#{SequenceNumber}";
+        public string RouteSectionId
+        {
+            get => $"{RouteId}#{SequenceNumber}";
+            private set { /* ignore setter */ }
+        }
+
 
         [DataMember(Name = "sequence_number", Order = 5)]
         public int SequenceNumber { get; private set; }

@@ -47,5 +47,10 @@ namespace TrainScheduler.UI
                 _graphViewer.ResumeLayout();
             }
         }
+
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+            Program.MainForm?.saveSolutionToolStripMenuItem_Click(sender, e);
+        }
     }
 }

@@ -16,8 +16,21 @@ namespace TrainScheduler.Data
         [DataMember(Name = "id")]
         public string Id { get; private set; }
 
+        [IgnoreDataMember] private List<RouteSection> _routeSections;
+
         [DataMember(Name = "route_sections")]
-        public List<RouteSection> RouteSections { get; private set; }
+        public List<RouteSection> RouteSections
+        {
+            get => _routeSections;
+            private set
+            {
+                _routeSections = value;
+                RouteSectionDic = _routeSections.ToDictionary(s => s.SequenceNumber);
+            }
+        }
+
+        [IgnoreDataMember]
+        public Dictionary<int, RouteSection> RouteSectionDic { get; private set; }
 
         protected override void CopyFrom(object other)
         {
@@ -25,7 +38,6 @@ namespace TrainScheduler.Data
             {
                 Id = src.Id;
                 RouteSections = src.RouteSections;
-                OrganizeInDictionaries();
             }
             else
             {
@@ -33,12 +45,5 @@ namespace TrainScheduler.Data
             }
         }
 
-        private void OrganizeInDictionaries()
-        {
-            RouteSectionDic = RouteSections.ToDictionary(p => p.SequenceNumber, p => p);
-        }
-
-        [IgnoreDataMember]
-        public Dictionary<int, RouteSection> RouteSectionDic { get; private set; }
     }
 }

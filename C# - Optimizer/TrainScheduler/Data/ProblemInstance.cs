@@ -28,11 +28,36 @@ namespace TrainScheduler.Data
         [DataMember(Name = "hash", Order = 2)]
         public int Hash { get; private set; }
 
+        [IgnoreDataMember] private List<ServiceIntention> _serviceIntentions;
         [DataMember(Name = "service_intentions", Order = 3)]
-        public List<ServiceIntention> ServiceIntentions { get; private set; }
+        public List<ServiceIntention> ServiceIntentions
+        {
+            get => _serviceIntentions;
+            private set
+            {
+                _serviceIntentions = value;
+                ServiceIntentionsDic = _serviceIntentions.ToDictionary(t => t.Id, t => t);
+            }
+        }
 
+        [IgnoreDataMember]
+        public Dictionary<string, ServiceIntention> ServiceIntentionsDic { get; private set; }
+
+        [IgnoreDataMember] private List<Route> _routes;
         [DataMember(Name = "routes", Order = 4)]
-        public List<Route> Routes { get; private set; }
+        public List<Route> Routes
+        {
+            get => _routes;
+            private set
+            {
+                _routes = value;
+                RouteDic = _routes.ToDictionary(r => r.Id, r => r);
+                CreateRouteGraph();
+            }
+        }
+
+        [IgnoreDataMember]
+        public Dictionary<string, Route> RouteDic { get; private set; }
 
         [DataMember(Name = "resources", Order = 5)]
         public List<Resource> Resources { get; private set; }
@@ -47,8 +72,6 @@ namespace TrainScheduler.Data
                 ServiceIntentions = src.ServiceIntentions;
                 Routes = src.Routes;
                 Resources = src.Resources;
-
-                OrganizeInDictionaries();
             }
             else
             {
@@ -56,15 +79,7 @@ namespace TrainScheduler.Data
             }
         }
 
-        private void OrganizeInDictionaries()
-        {
-            RouteDic = Routes.ToDictionary(r => r.Id, r => r);
-        }
-
-        [IgnoreDataMember]
-        public Dictionary<string, Route> RouteDic { get; private set; }
-
-        public void CreateRouteGraph()
+        private void CreateRouteGraph()
         {
             foreach (var route in RouteDic.Values)
             {

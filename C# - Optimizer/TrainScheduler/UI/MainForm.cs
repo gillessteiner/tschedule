@@ -52,7 +52,6 @@ namespace TrainScheduler.UI
                 {
                     CurrentProblem = new ProblemInstance();
                     CurrentProblem.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
-                    CurrentProblem.CreateRouteGraph();
                     problemView.Setup();
                     solverView.Setup();
                     
@@ -64,9 +63,23 @@ namespace TrainScheduler.UI
             }
         }
 
-        private void saveSolutionToolStripMenuItem_Click(object sender, System.EventArgs e)
+        internal void saveSolutionToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            // Displays an OpenFileDialog so the user can select a Cursor.  
+            saveJsonFileDialog.Filter = "JSON Files|*.json|All Files|*.*";
+            saveJsonFileDialog.Title = "Select a name for the Solution File";
 
+            if (saveJsonFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    File.WriteAllText(saveJsonFileDialog.FileName, CurrentSolution.ToJson());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "File saving failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
         }
 
         private void closeToolStripMenuItem_Click(object sender, System.EventArgs e)

@@ -159,26 +159,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Samples\01_dummy.json" />
-    <None Include="Samples\02_a_little_less_dummy.json" />
-    <None Include="Samples\03_FWA_0.125.json" />
-    <None Include="Samples\04_V1.02_FWA_without_obstruction.json" />
-    <None Include="Samples\05_V1.02_FWA_with_obstruction.json" />
-    <None Include="Samples\06_V1.20_FWA.json" />
-    <None Include="Samples\07_V1.22_FWA.json" />
-    <None Include="Samples\08_V1.30_FWA.json" />
-    <None Include="Samples\09_ZUE-ZG-CH_0600-1200.json" />
-    <None Include="Samples\sample_scenario.json" />
-    <None Include="Samples\sample_scenario_solution.json" />
-    <None Include="Samples\sample_scenario_solution_delayed_arrival.json" />
-    <None Include="Samples\sample_scenario_solution_early_entry.json" />
-    <None Include="Samples\sample_scenario_solution_initial_times.json" />
-    <None Include="Samples\sample_scenario_solution_warningHash.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Samples\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="train_icon_62695_dDQ_icon.ico" />
     <None Include="Resources\solution.png" />
