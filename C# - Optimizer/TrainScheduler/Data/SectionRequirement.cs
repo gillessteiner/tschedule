@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     [DataContract]
-    public class SectionRequirement : Serializable
+    public class SectionRequirement : DeSerializable
     {
         public SectionRequirement()
         {

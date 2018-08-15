@@ -19,8 +19,8 @@ namespace TrainScheduler.UI
 
         public virtual void Setup()
         {
-            grpDefinition.Enabled = MainForm.CurrentProblem != null;
-            txtLabel.Text = MainForm.CurrentProblem?.Label;
+            grpDefinition.Enabled = Program.MainForm?.CurrentProblem != null;
+            txtLabel.Text = Program.MainForm?.CurrentProblem?.Label;
 
         }
 

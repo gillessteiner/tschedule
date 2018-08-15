@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using TrainScheduler.InputOutputDataModel;
 
 namespace TrainScheduler.Data
 {

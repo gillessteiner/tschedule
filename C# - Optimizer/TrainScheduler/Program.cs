@@ -7,6 +7,11 @@ namespace TrainScheduler
     static class Program
     {
         /// <summary>
+        /// MainForm instance accessible as a singleton
+        /// </summary>
+        internal static MainForm MainForm { get; private set; }
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -14,7 +19,8 @@ namespace TrainScheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm = new MainForm();
+            Application.Run(MainForm);
         }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Msagl.Drawing;
-using TrainScheduler.InputOutputDataModel;
 using Microsoft.Msagl.GraphViewerGdi;
-using Graph = TrainScheduler.Data.Graph;
 
 namespace TrainScheduler.UI
 {
@@ -26,48 +23,34 @@ namespace TrainScheduler.UI
             panGraphViewContainer.ResumeLayout();
         }
 
-        private readonly Dictionary<string, Graph> _routes = new Dictionary<string, Graph>();
-        public override void Setup()
+        public sealed override void Setup()
         {
             base.Setup();
 
-            grpDefinition.Enabled = grpGraph.Enabled = MainForm.CurrentProblem != null;
+            grpDefinition.Enabled = grpGraph.Enabled = Program.MainForm?.CurrentProblem != null;
 
-            txtHash.Text = MainForm.CurrentProblem?.Hash.ToString();
-            txtNbTrains.Text = MainForm.CurrentProblem?.ServiceIntentions?.Count.ToString();
-            txtNbRoutes.Text = MainForm.CurrentProblem?.Routes?.Count.ToString();
-            txtNbResources.Text = MainForm.CurrentProblem?.Resources?.Count.ToString();
+            txtHash.Text = Program.MainForm?.CurrentProblem?.Hash.ToString();
+            txtNbTrains.Text = Program.MainForm?.CurrentProblem?.ServiceIntentions?.Count.ToString();
+            txtNbRoutes.Text = Program.MainForm?.CurrentProblem?.Routes?.Count.ToString();
+            txtNbResources.Text = Program.MainForm?.CurrentProblem?.Resources?.Count.ToString();
 
-            CreateRouteGraphs();
-        }
-
-        public void CreateRouteGraphs()
-        {
-            _routes.Clear();
-            if (MainForm.CurrentProblem != null)
-            {
-                foreach (var route in MainForm.CurrentProblem.Routes)
-                {
-                    _routes.Add(route.Id, new Graph(route));
-                }
-
-                cboRouteSelection.Items.Clear();
-                cboRouteSelection.Items.AddRange(_routes.Keys.ToArray());
-            }
+            cboRouteSelection.Items.Clear();
+            if (Program.MainForm?.CurrentProblem != null)
+                cboRouteSelection.Items.AddRange(Program.MainForm.CurrentProblem.RouteDic.Keys.ToArray());
         }
 
         private void cboRouteSelection_SelectionChangeCommitted(object sender, System.EventArgs e)
         {
             var key = (string)cboRouteSelection.SelectedItem;
-            if (_routes.ContainsKey(key))
+            if (Program.MainForm.CurrentProblem.RouteDic.ContainsKey(key))
             {
-                txtNbPossiblePaths.Text = _routes[key].PossiblePathsOrderedByPenalty.Length.ToString("##,###");
+                txtNbPossiblePaths.Text = Program.MainForm.CurrentProblem.RouteDic[key].Graph.PossiblePathsOrderedByPenalty.Length.ToString("##,###");
                 _graphViewer.SuspendLayout();
-                _graphViewer.Graph = _routes[key].MSGraph;
+                _graphViewer.Graph = Program.MainForm.CurrentProblem.RouteDic[key].Graph.MSGraph;
                 _graphViewer.ResumeLayout();
 
                 cboPathSelection.Items.Clear();
-                for(int i=0; i < _routes[key].PossiblePathsOrderedByPenalty.Length; ++i)
+                for(int i=0; i < Program.MainForm.CurrentProblem.RouteDic[key].Graph.PossiblePathsOrderedByPenalty.Length; ++i)
                     cboPathSelection.Items.Add(i);
             }
         }
@@ -77,7 +60,7 @@ namespace TrainScheduler.UI
             var routeKey = (string)cboRouteSelection.SelectedItem;
             var pathKey = (int) cboPathSelection.SelectedItem;
 
-            if (_routes.ContainsKey(routeKey))
+            if (Program.MainForm.CurrentProblem.RouteDic.ContainsKey(routeKey))
             {
                 _graphViewer.SuspendLayout();
                 foreach (var edge in _graphViewer.Graph.Edges)
@@ -85,7 +68,7 @@ namespace TrainScheduler.UI
                     edge.Attr.Color = Color.Black;
                 }
 
-                foreach (var edge in _routes[routeKey].PossiblePathsOrderedByPenalty[pathKey].Sections)
+                foreach (var edge in Program.MainForm.CurrentProblem.RouteDic[routeKey].Graph.PossiblePathsOrderedByPenalty[pathKey].Sections)
                 {
                     _graphViewer.Graph.EdgeById(edge.SequenceNumber.ToString()).Attr.Color = Color.Red;
                 }

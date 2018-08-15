@@ -3,10 +3,10 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     [DataContract]
-    public abstract class Serializable : ISerializable
+    public abstract class DeSerializable : IDeSerializable
     {
         // Do not expose outside 
         // Copy from temporary object, stealing references to collections
@@ -20,14 +20,6 @@ namespace TrainScheduler.InputOutputDataModel
             ms.Close();
         }
 
-        public string ToJson()
-        {
-            var ms = new MemoryStream();
-            var ser = new DataContractJsonSerializer(this.GetType());
-            ser.WriteObject(ms, this);
-            byte[] json = ms.ToArray();
-            ms.Close();
-            return Encoding.UTF8.GetString(json, 0, json.Length);
-        }
+      
     }
 }

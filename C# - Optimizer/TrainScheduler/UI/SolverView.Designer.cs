@@ -35,26 +35,21 @@
             this.logSolver = new TrainScheduler.UI.LogView();
             this.label4 = new System.Windows.Forms.Label();
             this.numMaxIter = new System.Windows.Forms.NumericUpDown();
-            this.grpSolverInfo = new System.Windows.Forms.GroupBox();
-            this.txtIteration = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnSolve = new System.Windows.Forms.Button();
             this.grpDefinition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxIter)).BeginInit();
-            this.grpSolverInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpDefinition
             // 
             this.grpDefinition.Controls.Add(this.btnSolve);
-            this.grpDefinition.Controls.Add(this.grpSolverInfo);
             this.grpDefinition.Controls.Add(this.numMaxIter);
             this.grpDefinition.Controls.Add(this.label4);
             this.grpDefinition.Controls.Add(this.cboSolverList);
             this.grpDefinition.Controls.Add(this.label2);
-            this.grpDefinition.Size = new System.Drawing.Size(670, 227);
+            this.grpDefinition.Size = new System.Drawing.Size(670, 176);
             this.grpDefinition.Controls.SetChildIndex(this.pictureBox1, 0);
             this.grpDefinition.Controls.SetChildIndex(this.labPb, 0);
             this.grpDefinition.Controls.SetChildIndex(this.label1, 0);
@@ -63,7 +58,6 @@
             this.grpDefinition.Controls.SetChildIndex(this.cboSolverList, 0);
             this.grpDefinition.Controls.SetChildIndex(this.label4, 0);
             this.grpDefinition.Controls.SetChildIndex(this.numMaxIter, 0);
-            this.grpDefinition.Controls.SetChildIndex(this.grpSolverInfo, 0);
             this.grpDefinition.Controls.SetChildIndex(this.btnSolve, 0);
             // 
             // labPb
@@ -97,9 +91,9 @@
             // 
             this.grpLog.Controls.Add(this.logSolver);
             this.grpLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpLog.Location = new System.Drawing.Point(0, 227);
+            this.grpLog.Location = new System.Drawing.Point(0, 176);
             this.grpLog.Name = "grpLog";
-            this.grpLog.Size = new System.Drawing.Size(670, 281);
+            this.grpLog.Size = new System.Drawing.Size(670, 332);
             this.grpLog.TabIndex = 2;
             this.grpLog.TabStop = false;
             // 
@@ -108,7 +102,7 @@
             this.logSolver.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logSolver.Location = new System.Drawing.Point(3, 18);
             this.logSolver.Name = "logSolver";
-            this.logSolver.Size = new System.Drawing.Size(664, 260);
+            this.logSolver.Size = new System.Drawing.Size(664, 311);
             this.logSolver.TabIndex = 0;
             // 
             // label4
@@ -144,47 +138,19 @@
             this.numMaxIter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numMaxIter.ThousandsSeparator = true;
             this.numMaxIter.Value = new decimal(new int[] {
-            10000,
+            100,
             0,
             0,
             0});
             // 
-            // grpSolverInfo
-            // 
-            this.grpSolverInfo.Controls.Add(this.txtIteration);
-            this.grpSolverInfo.Controls.Add(this.label3);
-            this.grpSolverInfo.Location = new System.Drawing.Point(155, 124);
-            this.grpSolverInfo.Name = "grpSolverInfo";
-            this.grpSolverInfo.Size = new System.Drawing.Size(495, 90);
-            this.grpSolverInfo.TabIndex = 22;
-            this.grpSolverInfo.TabStop = false;
-            this.grpSolverInfo.Visible = false;
-            // 
-            // txtIteration
-            // 
-            this.txtIteration.Location = new System.Drawing.Point(80, 12);
-            this.txtIteration.Name = "txtIteration";
-            this.txtIteration.ReadOnly = true;
-            this.txtIteration.Size = new System.Drawing.Size(126, 22);
-            this.txtIteration.TabIndex = 22;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 17);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Iteration ";
-            // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(69, 136);
+            this.btnSolve.Location = new System.Drawing.Point(156, 128);
             this.btnSolve.Margin = new System.Windows.Forms.Padding(0);
             this.btnSolve.Name = "btnSolve";
-            this.btnSolve.Size = new System.Drawing.Size(80, 23);
+            this.btnSolve.Size = new System.Drawing.Size(168, 31);
             this.btnSolve.TabIndex = 23;
-            this.btnSolve.Text = "solve";
+            this.btnSolve.Text = "Run solver";
             this.btnSolve.UseVisualStyleBackColor = true;
             this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
             // 
@@ -202,8 +168,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numMaxIter)).EndInit();
-            this.grpSolverInfo.ResumeLayout(false);
-            this.grpSolverInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -217,8 +181,5 @@
         private System.Windows.Forms.NumericUpDown numMaxIter;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSolve;
-        private System.Windows.Forms.GroupBox grpSolverInfo;
-        private System.Windows.Forms.TextBox txtIteration;
-        private System.Windows.Forms.Label label3;
     }
 }

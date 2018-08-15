@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     [DataContract]
-    public class Connection : Serializable
+    public class Connection : DeSerializable
     {
         [DataMember(Name = "id", Order = 1)]
         public string Id { get; private set; }

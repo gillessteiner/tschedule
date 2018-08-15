@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     [DataContract]
-    public class RoutePath : Serializable
+    public class RoutePath : DeSerializable
     {
         public RoutePath()
         {
@@ -24,11 +25,20 @@ namespace TrainScheduler.InputOutputDataModel
             {
                 Id = src.Id;
                 RouteSections = src.RouteSections;
+                OrganizeInDictionaries();
             }
             else
             {
                 throw new InvalidCastException($"Cannot copy from type {other.GetType().ToString()} to {this.GetType().ToString()}");
             }
         }
+
+        private void OrganizeInDictionaries()
+        {
+            RouteSectionDic = RouteSections.ToDictionary(p => p.SequenceNumber, p => p);
+        }
+
+        [IgnoreDataMember]
+        public Dictionary<int, RouteSection> RouteSectionDic { get; private set; }
     }
 }

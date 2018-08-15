@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TrainScheduler.InputOutputDataModel;
+using TrainScheduler.Data;
 
 namespace Tests.Data
 {

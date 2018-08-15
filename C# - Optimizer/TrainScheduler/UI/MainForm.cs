@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using TrainScheduler.InputOutputDataModel;
+using TrainScheduler.Data;
 
 namespace TrainScheduler.UI
 {
@@ -26,8 +26,19 @@ namespace TrainScheduler.UI
             }
         }
 
-        internal static ProblemInstance CurrentProblem;
-        internal static Solution CurrentSolution;
+        internal ProblemInstance CurrentProblem;
+        private  Solution _currentsolution;
+        internal Solution CurrentSolution
+        {
+            get => _currentsolution;
+            set
+            {
+                _currentsolution = value;
+                solutionView.Setup();
+                saveSolutionToolStripMenuItem.Enabled = _currentsolution != null;
+            }
+
+        }
 
         private void openProblemToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
@@ -41,6 +52,7 @@ namespace TrainScheduler.UI
                 {
                     CurrentProblem = new ProblemInstance();
                     CurrentProblem.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
+                    CurrentProblem.CreateRouteGraph();
                     problemView.Setup();
                     solverView.Setup();
                     

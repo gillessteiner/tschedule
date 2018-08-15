@@ -63,21 +63,24 @@
     <Compile Include="Data\Graph.cs" />
     <Compile Include="Data\PossiblePath.cs" />
     <Compile Include="Data\SectionEdge.cs" />
-    <Compile Include="InputOutputDataModel\Connection.cs" />
-    <Compile Include="InputOutputDataModel\Duration.cs" />
-    <Compile Include="InputOutputDataModel\ISerializable.cs" />
-    <Compile Include="InputOutputDataModel\ProblemInstance.cs" />
-    <Compile Include="InputOutputDataModel\Resource.cs" />
-    <Compile Include="InputOutputDataModel\ResourceOccupation.cs" />
-    <Compile Include="InputOutputDataModel\Route.cs" />
-    <Compile Include="InputOutputDataModel\RoutePath.cs" />
-    <Compile Include="InputOutputDataModel\RouteSection.cs" />
-    <Compile Include="InputOutputDataModel\SectionRequirement.cs" />
-    <Compile Include="InputOutputDataModel\Serializable.cs" />
-    <Compile Include="InputOutputDataModel\ServiceIntention.cs" />
-    <Compile Include="InputOutputDataModel\Solution.cs" />
-    <Compile Include="InputOutputDataModel\TrainRun.cs" />
-    <Compile Include="InputOutputDataModel\TrainRunSection.cs" />
+    <Compile Include="Data\Connection.cs" />
+    <Compile Include="Data\Duration.cs" />
+    <Compile Include="Data\ISerializable.cs" />
+    <Compile Include="Data\ProblemInstance.cs" />
+    <Compile Include="Data\Resource.cs" />
+    <Compile Include="Data\ResourceOccupation.cs" />
+    <Compile Include="Data\Route.cs" />
+    <Compile Include="Data\RoutePath.cs" />
+    <Compile Include="Data\RouteSection.cs" />
+    <Compile Include="Data\SectionRequirement.cs" />
+    <Compile Include="Data\DeSerializable.cs" />
+    <Compile Include="Data\Serializable.cs" />
+    <Compile Include="Data\ServiceIntention.cs" />
+    <Compile Include="Data\Solution.cs" />
+    <Compile Include="Data\TrainRun.cs" />
+    <Compile Include="Data\TrainRunSection.cs" />
+    <Compile Include="Solver\AssignAndCorrectSolver.cs" />
+    <Compile Include="Solver\BaseSolver.cs" />
     <Compile Include="UI\BaseView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +120,7 @@
     <Compile Include="UI\SolverView.Designer.cs">
       <DependentUpon>SolverView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Logging.cs" />
     <EmbeddedResource Include="UI\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,9 +178,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Solver\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="train_icon_62695_dDQ_icon.ico" />
     <None Include="Resources\solution.png" />

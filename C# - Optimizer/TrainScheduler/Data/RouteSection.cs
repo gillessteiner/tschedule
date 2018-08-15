@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     [DataContract]
-    public class RouteSection : Serializable
+    public class RouteSection : DeSerializable
     {
         public RouteSection()
         {

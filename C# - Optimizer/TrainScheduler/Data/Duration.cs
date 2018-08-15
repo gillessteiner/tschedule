@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TrainScheduler.InputOutputDataModel
+namespace TrainScheduler.Data
 {
     public static class IsoDuration
     {

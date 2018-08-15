@@ -37,12 +37,12 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProblem = new System.Windows.Forms.TabPage();
-            this.tabSolver = new System.Windows.Forms.TabPage();
-            this.tabSolution = new System.Windows.Forms.TabPage();
-            this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.problemView = new TrainScheduler.UI.ProblemView();
+            this.tabSolver = new System.Windows.Forms.TabPage();
             this.solverView = new TrainScheduler.UI.SolverView();
-            this.solutionView1 = new TrainScheduler.UI.SolutionView();
+            this.tabSolution = new System.Windows.Forms.TabPage();
+            this.solutionView = new TrainScheduler.UI.SolutionView();
+            this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabProblem.SuspendLayout();
@@ -82,6 +82,7 @@
             // 
             // saveSolutionToolStripMenuItem
             // 
+            this.saveSolutionToolStripMenuItem.Enabled = false;
             this.saveSolutionToolStripMenuItem.Name = "saveSolutionToolStripMenuItem";
             this.saveSolutionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveSolutionToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
@@ -124,6 +125,14 @@
             this.tabProblem.Text = "Problem";
             this.tabProblem.UseVisualStyleBackColor = true;
             // 
+            // problemView
+            // 
+            this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.problemView.Location = new System.Drawing.Point(3, 3);
+            this.problemView.Name = "problemView";
+            this.problemView.Size = new System.Drawing.Size(714, 431);
+            this.problemView.TabIndex = 0;
+            // 
             // tabSolver
             // 
             this.tabSolver.Controls.Add(this.solverView);
@@ -135,25 +144,6 @@
             this.tabSolver.Text = "Solver";
             this.tabSolver.UseVisualStyleBackColor = true;
             // 
-            // tabSolution
-            // 
-            this.tabSolution.Controls.Add(this.solutionView1);
-            this.tabSolution.Location = new System.Drawing.Point(4, 25);
-            this.tabSolution.Name = "tabSolution";
-            this.tabSolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSolution.Size = new System.Drawing.Size(720, 437);
-            this.tabSolution.TabIndex = 2;
-            this.tabSolution.Text = "Solution";
-            this.tabSolution.UseVisualStyleBackColor = true;
-            // 
-            // problemView
-            // 
-            this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.problemView.Location = new System.Drawing.Point(3, 3);
-            this.problemView.Name = "problemView";
-            this.problemView.Size = new System.Drawing.Size(714, 431);
-            this.problemView.TabIndex = 0;
-            // 
             // solverView
             // 
             this.solverView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -162,13 +152,24 @@
             this.solverView.Size = new System.Drawing.Size(714, 431);
             this.solverView.TabIndex = 0;
             // 
-            // solutionView1
+            // tabSolution
             // 
-            this.solutionView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.solutionView1.Location = new System.Drawing.Point(3, 3);
-            this.solutionView1.Name = "solutionView1";
-            this.solutionView1.Size = new System.Drawing.Size(714, 431);
-            this.solutionView1.TabIndex = 0;
+            this.tabSolution.Controls.Add(this.solutionView);
+            this.tabSolution.Location = new System.Drawing.Point(4, 25);
+            this.tabSolution.Name = "tabSolution";
+            this.tabSolution.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSolution.Size = new System.Drawing.Size(720, 437);
+            this.tabSolution.TabIndex = 2;
+            this.tabSolution.Text = "Solution";
+            this.tabSolution.UseVisualStyleBackColor = true;
+            // 
+            // solutionView
+            // 
+            this.solutionView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solutionView.Location = new System.Drawing.Point(3, 3);
+            this.solutionView.Name = "solutionView";
+            this.solutionView.Size = new System.Drawing.Size(714, 431);
+            this.solutionView.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -206,7 +207,7 @@
         private ProblemView problemView;
         private System.Windows.Forms.TabPage tabSolution;
         private SolverView solverView;
-        private SolutionView solutionView1;
+        private SolutionView solutionView;
     }
 }
 
