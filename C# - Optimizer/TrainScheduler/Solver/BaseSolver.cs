@@ -40,6 +40,7 @@ namespace TrainScheduler.Solver
             if (BestSolution == null || (someSolution.ObjectiveValue < BestSolution.ObjectiveValue))
             {
                 BestSolution = someSolution;
+                BestSolution.Update();
                 Log($"Found a better solution {someSolution.ObjectiveValue:F2}");
             }
         }

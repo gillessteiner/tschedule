@@ -138,7 +138,7 @@
             this.numMaxIter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numMaxIter.ThousandsSeparator = true;
             this.numMaxIter.Value = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
             0});

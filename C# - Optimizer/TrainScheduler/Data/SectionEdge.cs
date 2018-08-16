@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using TrainScheduler.Properties;
 
 namespace TrainScheduler.Data
 {
@@ -27,11 +30,12 @@ namespace TrainScheduler.Data
         public int SequenceNumber => RouteSection?.SequenceNumber ?? 0;
         public double? Penalty => RouteSection?.Penalty;
         public TimeSpan MinimumRunningTime => RouteSection?.MinimumRunningTime ?? TimeSpan.Zero;
-        public int NbResourcesOccupied => RouteSection?.ResourceOccupations?.Count ?? 0;
-
-
+        public int NbResourcesOccupied => RouteSection?.OccupiedRessources?.Length ?? 0;
+        public string[] ResourceOccupations => RouteSection?.OccupiedRessources;
+        
         public string SectionMarker => (RouteSection?.SectionMarkers != null && RouteSection.SectionMarkers.Any())
             ? RouteSection.SectionMarkers[0]
             : null;
+
     }
 }

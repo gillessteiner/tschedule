@@ -29,7 +29,8 @@ namespace TrainScheduler.Data
             if (edge.Penalty.HasValue)
                 Penalty += edge.Penalty.Value;
 
-            NbResourcesOccupied += edge.NbResourcesOccupied;
+            foreach(var res in edge.ResourceOccupations)
+                 _resourceOccupied.Add(res);
         }
 
         public HashSet<string> SectionMarkers { get; private set; } = new HashSet<string>();
@@ -41,6 +42,13 @@ namespace TrainScheduler.Data
 
         public double Penalty { get; private set; } = 0.0;
 
-        public int NbResourcesOccupied { get; private set; } = 0;
+        private readonly HashSet<string> _resourceOccupied = new HashSet<string>();
+        public int NbResourcesOccupied => _resourceOccupied.Count;
+        public bool Visited { get; set; } = false;
+
+        public int HowMany(IEnumerable<string> conflictingResources)
+        {
+            return conflictingResources.Count(res => _resourceOccupied.Contains(res));
+        }
     }
 }

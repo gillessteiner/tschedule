@@ -58,6 +58,11 @@ namespace TrainScheduler.UI
 
             timer.Stop();
 
+            if (Program.MainForm.CurrentSolution == null)
+            {
+                logSolver.ReportError("Solver failed, no admissible solution.");
+            }
+
             logSolver.ReportInfo($"Simulation time:     {timer.Elapsed.Minutes:00}:{timer.Elapsed.Seconds:00}");
             logSolver.WriteTitle($"{DateTime.Now:F}, end");
             btnSolve.Enabled = true;

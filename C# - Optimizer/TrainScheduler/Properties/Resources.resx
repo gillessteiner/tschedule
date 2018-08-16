@@ -127,4 +127,19 @@
   <data name="solution" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\solution.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StatusInvalid_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusInvalid_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StatusOK_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusOK_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StatusWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusWarning.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StatusWarning_31x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusWarning_31x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

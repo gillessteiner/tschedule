@@ -47,9 +47,25 @@ namespace TrainScheduler.Data
         }
 
         [IgnoreDataMember]
+        public DateTime? EntryLatest { get; private set; }
+
+        [DataMember(Name = "entry_latest", Order = 5)]
+        private string EntryLatestStr
+        {
+            get => EntryLatest?.ToLongTimeString();
+            set {
+                if (value != null) {
+                    EntryLatest = DateTime.Parse(value);
+                }
+                else
+                    EntryLatest = null;
+            }
+        }
+
+        [IgnoreDataMember]
         public DateTime? ExitEarliest { get; private set; }
 
-        [DataMember(Name = "exit_earliest", Order = 5)]
+        [DataMember(Name = "exit_earliest", Order = 6)]
         private string ExitEarliestSrc
         {
             get => ExitEarliest?.ToLongTimeString();
@@ -64,13 +80,29 @@ namespace TrainScheduler.Data
             }
         }
 
-        [DataMember(Name = "entry_delay_weight", Order = 6)]
+        [IgnoreDataMember]
+        public DateTime? ExitLatest { get; private set; }
+
+        [DataMember(Name = "exit_latest", Order = 7)]
+        private string ExitLatestSrc
+        {
+            get => ExitLatest?.ToLongTimeString();
+            set {
+                if (value != null) {
+                    ExitLatest = DateTime.Parse(value);
+                }
+                else
+                    ExitLatest = null;
+            }
+        }
+
+        [DataMember(Name = "entry_delay_weight", Order = 8)]
         public double? EntryDelayWeight { get; private set; }
 
-        [DataMember(Name = "exit_delay_weight", Order = 7)]
+        [DataMember(Name = "exit_delay_weight", Order = 9)]
         public double? ExitDelayWeight { get; private set; }
 
-        [DataMember(Name = "connections", Order = 8)]
+        [DataMember(Name = "connections", Order = 10)]
         public List<Connection> Connections { get; private set; }
 
         protected override void CopyFrom(object other)

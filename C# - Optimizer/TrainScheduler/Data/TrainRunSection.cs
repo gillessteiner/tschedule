@@ -9,13 +9,19 @@ namespace TrainScheduler.Data
         public TrainRunSection(Route route, ServiceIntention train, SectionEdge section)
         {
             RouteId = route.Id;
+            UnderlyingEdge = section;
             RoutePathId = section.RoutePath;
             SequenceNumber = section.SequenceNumber;
-            if(train.SectionRequirements != null)
-                SectionRequirement = train.SectionRequirementsMarkers.Contains(section.SectionMarker)
+            if(train.SectionRequirements != null && section.SectionMarker != null)
+                SectionRequirement = train.SectionRequirementsDic.ContainsKey(section.SectionMarker)
                     ? section.SectionMarker
                     : null;
         }
+
+        [IgnoreDataMember]
+        public SectionEdge UnderlyingEdge { get; private set; }
+
+        [IgnoreDataMember] public string SectionMarker => UnderlyingEdge?.SectionMarker;
 
         [DataMember(Name = "route", Order = 3)]
         public string RouteId { get; private set; }
@@ -27,7 +33,6 @@ namespace TrainScheduler.Data
             private set { /* ignore setter */ }
         }
 
-
         [DataMember(Name = "sequence_number", Order = 5)]
         public int SequenceNumber { get; private set; }
 
@@ -38,39 +43,23 @@ namespace TrainScheduler.Data
         public string SectionRequirement { get; private set; }
 
         [IgnoreDataMember]
-        public DateTime? EntryTime { get; private set; }
+        public DateTime EntryTime { get; internal set; }
 
         [DataMember(Name = "entry_time", Order = 1)]
-        private string EntryTimeStr
+        public string EntryTimeStr
         {
-            get => EntryTime?.ToLongTimeString();
-            set
-            {
-                if (value != null)
-                {
-                    EntryTime = DateTime.Parse(value);
-                }
-                else
-                    EntryTime = null;
-            }
+            get => EntryTime.ToLongTimeString();
+            private set => EntryTime = value != null ? DateTime.Parse(value) : DateTime.Today;
         }
 
         [IgnoreDataMember]
-        public DateTime? ExitTime { get; private set; }
+        public DateTime ExitTime { get; internal set; }
 
         [DataMember(Name = "exit_time", Order = 2)]
-        private string ExitTimeStr
+        public string ExitTimeStr
         {
-            get => ExitTime?.ToLongTimeString();
-            set
-            {
-                if (value != null)
-                {
-                    ExitTime = DateTime.Parse(value);
-                }
-                else
-                    ExitTime = null;
-            }
+            get => ExitTime.ToLongTimeString();
+            private set => ExitTime = value != null ? DateTime.Parse(value) : DateTime.Today;
         }
     }
 }

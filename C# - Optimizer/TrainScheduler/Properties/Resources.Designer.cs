@@ -61,6 +61,16 @@ namespace TrainScheduler.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Cancel {
+            get {
+                object obj = ResourceManager.GetObject("Cancel", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap problem {
@@ -76,6 +86,46 @@ namespace TrainScheduler.Properties {
         internal static System.Drawing.Bitmap solution {
             get {
                 object obj = ResourceManager.GetObject("solution", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusInvalid_32x {
+            get {
+                object obj = ResourceManager.GetObject("StatusInvalid_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusOK_32x {
+            get {
+                object obj = ResourceManager.GetObject("StatusOK_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon StatusWarning {
+            get {
+                object obj = ResourceManager.GetObject("StatusWarning", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusWarning_31x32 {
+            get {
+                object obj = ResourceManager.GetObject("StatusWarning_31x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

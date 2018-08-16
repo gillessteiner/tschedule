@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Msagl.GraphViewerGdi;
+using TrainScheduler.Properties;
 
 namespace TrainScheduler.UI
 {
@@ -51,6 +53,25 @@ namespace TrainScheduler.UI
         private void btnSave_Click(object sender, System.EventArgs e)
         {
             Program.MainForm?.saveSolutionToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnValidate_Click(object sender, System.EventArgs e)
+        {
+            btnValidate.Enabled = false;
+            var txt = Program.MainForm?.CurrentSolution?.Validate();
+            if (txt != null)
+            {
+                txtValidationError.Text = txt;
+                picValidation.Image = Resources.StatusInvalid_32x;
+            }
+            else
+            {
+                txtValidationError.Text = "Solution is valid";
+                picValidation.Image = Resources.StatusOK_32x;
+            }
+
+
+            txtValidationError.Visible = picValidation.Visible = btnValidate.Enabled = true;
         }
     }
 }

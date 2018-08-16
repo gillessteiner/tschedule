@@ -59,8 +59,22 @@ namespace TrainScheduler.Data
         [IgnoreDataMember]
         public Dictionary<string, Route> RouteDic { get; private set; }
 
+        [IgnoreDataMember] private List<Resource> _resources;
+
         [DataMember(Name = "resources", Order = 5)]
-        public List<Resource> Resources { get; private set; }
+        public List<Resource> Resources
+        {
+            get => _resources;
+            private set
+            {
+                _resources = value;
+                ResourcesDic = _resources.ToDictionary(r => r.Id);
+            }
+        }
+
+        [IgnoreDataMember]
+        public Dictionary<string, Resource> ResourcesDic { get; private set; }
+
         #endregion
 
         protected override void CopyFrom(object other)
@@ -85,6 +99,11 @@ namespace TrainScheduler.Data
             {
                 route.CreateGraph();
             }
+        }
+
+        public Resource TryGetResource(string id)
+        {
+            return ResourcesDic.ContainsKey(id) ? ResourcesDic[id] : null;
         }
     }
 }

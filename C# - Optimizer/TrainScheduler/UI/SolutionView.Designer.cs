@@ -38,17 +38,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtObjValue = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnValidate = new System.Windows.Forms.Button();
+            this.txtValidationError = new System.Windows.Forms.TextBox();
+            this.picValidation = new System.Windows.Forms.PictureBox();
             this.grpDefinition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpGraph.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidation)).BeginInit();
             this.SuspendLayout();
             // 
             // grpDefinition
             // 
+            this.grpDefinition.Controls.Add(this.picValidation);
+            this.grpDefinition.Controls.Add(this.txtValidationError);
+            this.grpDefinition.Controls.Add(this.btnValidate);
             this.grpDefinition.Controls.Add(this.btnSave);
             this.grpDefinition.Controls.Add(this.txtObjValue);
             this.grpDefinition.Controls.Add(this.label2);
+            this.grpDefinition.Size = new System.Drawing.Size(686, 176);
             this.grpDefinition.Controls.SetChildIndex(this.pictureBox1, 0);
             this.grpDefinition.Controls.SetChildIndex(this.labPb, 0);
             this.grpDefinition.Controls.SetChildIndex(this.label1, 0);
@@ -56,6 +64,9 @@
             this.grpDefinition.Controls.SetChildIndex(this.label2, 0);
             this.grpDefinition.Controls.SetChildIndex(this.txtObjValue, 0);
             this.grpDefinition.Controls.SetChildIndex(this.btnSave, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.btnValidate, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.txtValidationError, 0);
+            this.grpDefinition.Controls.SetChildIndex(this.picValidation, 0);
             // 
             // labPb
             // 
@@ -71,9 +82,9 @@
             this.grpGraph.Controls.Add(this.panel1);
             this.grpGraph.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpGraph.Enabled = false;
-            this.grpGraph.Location = new System.Drawing.Point(0, 133);
+            this.grpGraph.Location = new System.Drawing.Point(0, 176);
             this.grpGraph.Name = "grpGraph";
-            this.grpGraph.Size = new System.Drawing.Size(686, 412);
+            this.grpGraph.Size = new System.Drawing.Size(686, 369);
             this.grpGraph.TabIndex = 2;
             this.grpGraph.TabStop = false;
             this.grpGraph.Text = "Graph";
@@ -83,7 +94,7 @@
             this.panGraphViewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panGraphViewContainer.Location = new System.Drawing.Point(3, 52);
             this.panGraphViewContainer.Name = "panGraphViewContainer";
-            this.panGraphViewContainer.Size = new System.Drawing.Size(680, 357);
+            this.panGraphViewContainer.Size = new System.Drawing.Size(680, 314);
             this.panGraphViewContainer.TabIndex = 1;
             // 
             // panel1
@@ -155,6 +166,38 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnValidate
+            // 
+            this.btnValidate.Location = new System.Drawing.Point(334, 96);
+            this.btnValidate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnValidate.Name = "btnValidate";
+            this.btnValidate.Size = new System.Drawing.Size(168, 31);
+            this.btnValidate.TabIndex = 25;
+            this.btnValidate.Text = "Validate solution";
+            this.btnValidate.UseVisualStyleBackColor = true;
+            this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
+            // 
+            // txtValidationError
+            // 
+            this.txtValidationError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValidationError.Location = new System.Drawing.Point(155, 135);
+            this.txtValidationError.Name = "txtValidationError";
+            this.txtValidationError.ReadOnly = true;
+            this.txtValidationError.Size = new System.Drawing.Size(495, 22);
+            this.txtValidationError.TabIndex = 26;
+            this.txtValidationError.Visible = false;
+            // 
+            // picValidation
+            // 
+            this.picValidation.Location = new System.Drawing.Point(127, 135);
+            this.picValidation.Name = "picValidation";
+            this.picValidation.Size = new System.Drawing.Size(22, 22);
+            this.picValidation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picValidation.TabIndex = 27;
+            this.picValidation.TabStop = false;
+            this.picValidation.Visible = false;
+            // 
             // SolutionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -169,6 +212,7 @@
             this.grpGraph.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidation)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,5 +228,8 @@
         private System.Windows.Forms.TextBox txtObjValue;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtValidationError;
+        private System.Windows.Forms.Button btnValidate;
+        private System.Windows.Forms.PictureBox picValidation;
     }
 }

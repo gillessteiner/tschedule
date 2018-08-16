@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using TrainScheduler.Utils;
+using Math = System.Math;
 
 namespace TrainScheduler.UI
 {

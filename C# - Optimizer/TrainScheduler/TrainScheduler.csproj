@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Conflict.cs" />
     <Compile Include="Data\EventNode.cs" />
     <Compile Include="Data\Graph.cs" />
     <Compile Include="Data\PossiblePath.cs" />
@@ -121,6 +122,8 @@
       <DependentUpon>SolverView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Logging.cs" />
+    <Compile Include="Utils\UsedResourceCollection.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <EmbeddedResource Include="UI\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +170,11 @@
     <Folder Include="Samples\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Cancel.ico" />
+    <None Include="Resources\StatusInvalid_32x.png" />
+    <None Include="Resources\StatusOK_32x.png" />
+    <None Include="Resources\StatusWarning.ico" />
+    <None Include="Resources\StatusWarning_31x32.png" />
     <Content Include="train_icon_62695_dDQ_icon.ico" />
     <None Include="Resources\solution.png" />
     <None Include="Resources\problem.png" />

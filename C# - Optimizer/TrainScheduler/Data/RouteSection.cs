@@ -56,8 +56,22 @@ namespace TrainScheduler.Data
             set => MinimumRunningTime = IsoDuration.FromString(value);
         }
 
+        [IgnoreDataMember] private List<ResourceOccupation> _resourceOccupations;
+
         [DataMember(Name = "resource_occupations", Order = 8)]
-        public List<ResourceOccupation> ResourceOccupations { get; private set; }
+        private List<ResourceOccupation> ResourceOccupations
+        {
+            get => _resourceOccupations;
+            set
+            {
+                _resourceOccupations = value;
+                OccupiedRessources = _resourceOccupations.Select(r => r.Resource).ToArray();
+            }
+        }
+
+        // Save as resourceoccupation but simply the id
+        [IgnoreDataMember]
+        public string[] OccupiedRessources { get; private set; }
 
         [DataMember(Name = "section_marker", Order = 9)]
         public List<string> SectionMarkers { get; private set; }

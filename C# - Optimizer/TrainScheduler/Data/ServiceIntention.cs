@@ -26,12 +26,20 @@ namespace TrainScheduler.Data
             private set
             {
                 _sectionRequirements = value;
-                SectionRequirementsMarkers = new HashSet<string>(_sectionRequirements.Select(sr => sr.SectionMarker));
+                SectionRequirementsDic = _sectionRequirements.ToDictionary(sr => sr.SectionMarker);
+                MaxDelayPenalty =
+                    _sectionRequirements.Max(sr => Math.Max(sr.EntryDelayWeight ?? 0, sr.ExitDelayWeight ?? 0));
+                MinEntryEarliest = _sectionRequirements.Where(sr => sr.EntryEarliest.HasValue)
+                    .Min(sr => sr.EntryEarliest.Value);
             }
-
         }
 
-        [IgnoreDataMember] public HashSet<string> SectionRequirementsMarkers { get; private set; }
+        [IgnoreDataMember] public DateTime MinEntryEarliest { get; private set; } = DateTime.Today;
+
+        [IgnoreDataMember]
+        public double MaxDelayPenalty { get; private set; }
+
+        [IgnoreDataMember] public Dictionary<string, SectionRequirement> SectionRequirementsDic { get; private set; }
 
         protected override void CopyFrom(object other)
         {
