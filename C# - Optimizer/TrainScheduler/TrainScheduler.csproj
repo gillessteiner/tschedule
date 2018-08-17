@@ -80,8 +80,11 @@
     <Compile Include="Data\Solution.cs" />
     <Compile Include="Data\TrainRun.cs" />
     <Compile Include="Data\TrainRunSection.cs" />
-    <Compile Include="Solver\AssignAndCorrectSolver.cs" />
+    <Compile Include="Solver\IterativeConflictSolver.cs" />
+    <Compile Include="Solver\DummySolver.cs" />
     <Compile Include="Solver\BaseSolver.cs" />
+    <Compile Include="Solver\ReorderingSolver.cs" />
+    <Compile Include="Solver\SmarterConflictSolver.cs" />
     <Compile Include="UI\BaseView.cs">
       <SubType>UserControl</SubType>
     </Compile>

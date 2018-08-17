@@ -42,7 +42,7 @@ namespace TrainScheduler.Utils
             }
         }
 
-        public Tuple<string, int, DateTime, DateTime> TryAdd(string resId, string trainId, int sequenceNumber, DateTime entry, DateTime exit)
+        public IEnumerable<(string trainId, int sectionId, DateTime start, DateTime end)> TryAdd(string resId, string trainId, int sequenceNumber, DateTime entry, DateTime exit)
         {
             if (!_container.ContainsKey(resId)) {
                 _container.Add(resId, new Dictionary<string, Dictionary<int, Tuple<DateTime, DateTime>>>());
@@ -59,13 +59,12 @@ namespace TrainScheduler.Utils
                 {
                     if(Math.Intersect(entry, exit, keyVal.Value.Item1, keyVal.Value.Item2))
                     {
-                        return new Tuple<string, int, DateTime, DateTime>(collection.Key, keyVal.Key, keyVal.Value.Item1, keyVal.Value.Item2);// Means this period intersect an existing one
+                        yield return (collection.Key, keyVal.Key, keyVal.Value.Item1, keyVal.Value.Item2); // Means this period intersect an existing one
                     }
                 }
             }
 
             _container[resId][trainId][sequenceNumber] = new Tuple<DateTime, DateTime>(entry, exit);
-            return null;
         }
 
         public void RemoveTrain(string trainId)
@@ -78,6 +77,10 @@ namespace TrainScheduler.Utils
                 }
             }
         }
+
+       public void Clear() {
+          _container.Clear();
+       }
     }
 }
  
