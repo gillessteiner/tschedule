@@ -12,16 +12,23 @@ namespace TrainScheduler.Data {
          Route = route;
       }
 
-      [IgnoreDataMember] public ServiceIntention Train { get; private set; }
+      [IgnoreDataMember] private ServiceIntention _train;
+      [IgnoreDataMember]
+      public ServiceIntention Train {
+         get => _train;
+         internal set {
+            _train = value;
+            _trainId = _train.Id; }
+      }
 
       [IgnoreDataMember]
       internal Route Route { get; set; }
 
+      [IgnoreDataMember] private string _trainId;
       [DataMember(Name = "service_intention_id", Order = 1)]
       public string ServiceIntentionId {
-         get => Train.Id;
-         private set { /* ignore setter */
-         }
+         get => _trainId;
+         private set => _trainId = value;
       }
 
       [IgnoreDataMember] private List<TrainRunSection> _trainRunSections;
@@ -57,6 +64,12 @@ namespace TrainScheduler.Data {
 
       public bool SelectNextPath() {
          return SelectPath(++_selectedPathIndex);
+      }
+
+      private readonly Random _random = new Random(0);
+
+      public void AssignRandomPath() {
+         SelectPath(_random.Next(Route.Graph.PossiblePathsOrderedByPenalty.Length));
       }
 
       public void ApplyDelay(TimeSpan delay, int startIndex = 0) {
@@ -102,23 +115,26 @@ namespace TrainScheduler.Data {
 
       [IgnoreDataMember] private Microsoft.Msagl.Drawing.Graph _msGraph;
 
-      [IgnoreDataMember] public Microsoft.Msagl.Drawing.Graph MSGraph => _msGraph;
+      [IgnoreDataMember]
+      public Microsoft.Msagl.Drawing.Graph MSGraph => _msGraph;
 
       public bool IsScheduled { get; set; } = false;
 
       internal void CreateGraph() {
-         _msGraph = new Microsoft.Msagl.Drawing.Graph($"solution_graph") {
-            Attr = {LayerDirection = LayerDirection.LR}
-         };
+         if (Route?.Graph?.PossiblePathsOrderedByPenalty?.Any() ?? false) {
+            _msGraph = new Microsoft.Msagl.Drawing.Graph($"solution_graph") {
+               Attr = {LayerDirection = LayerDirection.LR}
+            };
 
-         foreach (var edge in TrainRunSections) {
-            _msGraph.AddEdge(edge.UnderlyingEdge.Entry.Marker, $"{edge.EntryTimeStr} - {edge.ExitTimeStr}",
-               edge.UnderlyingEdge.Exit.Marker);
+            foreach (var edge in TrainRunSections) {
+               /*
+               _msGraph.AddEdge(edge.UnderlyingEdge.Entry.Marker, $"{edge.EntryTimeStr} - {edge.ExitTimeStr}",
+                  edge.UnderlyingEdge.Exit.Marker);
+                  */
+            }
          }
       }
 
       #endregion
-
-
    }
 }

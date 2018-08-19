@@ -83,6 +83,7 @@
     <Compile Include="Solver\IterativeConflictSolver.cs" />
     <Compile Include="Solver\DummySolver.cs" />
     <Compile Include="Solver\BaseSolver.cs" />
+    <Compile Include="Solver\IterativeDummySolver.cs" />
     <Compile Include="Solver\ReorderingSolver.cs" />
     <Compile Include="Solver\SmarterConflictSolver.cs" />
     <Compile Include="UI\BaseView.cs">

@@ -9,7 +9,6 @@ namespace TrainScheduler.Data
         public TrainRunSection(Route route, ServiceIntention train, SectionEdge section)
         {
             RouteId = route.Id;
-            UnderlyingEdge = section;
             RoutePathId = section.RoutePath;
             SequenceNumber = section.SequenceNumber;
             if(train.SectionRequirements != null && section.SectionMarker != null)
@@ -17,11 +16,6 @@ namespace TrainScheduler.Data
                     ? section.SectionMarker
                     : null;
         }
-
-        [IgnoreDataMember]
-        public SectionEdge UnderlyingEdge { get; private set; }
-
-        [IgnoreDataMember] public string SectionMarker => UnderlyingEdge?.SectionMarker;
 
         [DataMember(Name = "route", Order = 3)]
         public string RouteId { get; private set; }
@@ -61,5 +55,8 @@ namespace TrainScheduler.Data
             get => ExitTime.ToLongTimeString();
             private set => ExitTime = value != null ? DateTime.Parse(value) : DateTime.Today;
         }
+
+       [IgnoreDataMember]
+       public string Key => $"{RouteId}#{SequenceNumber}";
     }
 }

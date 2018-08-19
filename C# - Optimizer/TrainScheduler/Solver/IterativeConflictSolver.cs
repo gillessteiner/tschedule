@@ -54,13 +54,14 @@ namespace TrainScheduler.Solver {
             // ----------------------------------------------------
             //Log($"Delay train {trainRun.ServiceIntentionId} start ? ", Utils.Logging.LogEventArgs.MessageType.Info, false);
             var delay = TimeSpan.Zero;
-            var initialSection = trainRun.TrainRunSections[0];
-            foreach (var resId in initialSection.UnderlyingEdge.ResourceOccupations) {
+            var initialRunSection = trainRun.TrainRunSections[0];
+            var initialSection = problem.TryGetRouteSection(initialRunSection.Key);
+            foreach (var resId in initialSection.ResourceIds) {
                var resource = problem.TryGetResource(resId);
                if (resource != null) {
                   foreach (var usage in usedResources.UsageByOtherThan(resId, trainRun.ServiceIntentionId)) {
-                     if (Math.Intersect(initialSection.EntryTime, initialSection.ExitTime + resource.ReleaseTime, usage.Item3, usage.Item4))
-                        delay = Math.Max(delay, usage.Item4 - initialSection.EntryTime);
+                     if (Math.Intersect(initialRunSection.EntryTime, initialRunSection.ExitTime + resource.ReleaseTime, usage.Item3, usage.Item4))
+                        delay = Math.Max(delay, usage.Item4 - initialRunSection.EntryTime);
                   }
                }
             }
@@ -69,23 +70,24 @@ namespace TrainScheduler.Solver {
             if (delay > TimeSpan.Zero) {
                ++nbConflicts;
                //Log($"Yes. Delay is {delay}");
-               initialSection.EntryTime += delay;
+               initialRunSection.EntryTime += delay;
                trainRun.ApplyDelay(delay);
             }
 
             //Log($"Check other sections for delays ... ");
             for (int k = 1; k < trainRun.TrainRunSections.Count; ++k) {
-               var section = trainRun.TrainRunSections[k];
+               var runSection = trainRun.TrainRunSections[k];
+               var section = problem.TryGetRouteSection(runSection.Key);
 
                // Check resource occupation for next section
                delay = TimeSpan.Zero;
 
-               foreach (var resId in section.UnderlyingEdge.ResourceOccupations) {
+               foreach (var resId in section.ResourceIds) {
                   var resource = problem.TryGetResource(resId);
                   if (resource != null) {
                      foreach (var usage in usedResources.UsageByOtherThan(resId, trainRun.ServiceIntentionId)) {
-                        if (Math.Intersect(section.EntryTime, section.ExitTime + resource.ReleaseTime, usage.Item3, usage.Item4)) {
-                           delay = Math.Max(delay, usage.Item4 - section.EntryTime);
+                        if (Math.Intersect(runSection.EntryTime, runSection.ExitTime + resource.ReleaseTime, usage.Item3, usage.Item4)) {
+                           delay = Math.Max(delay, usage.Item4 - runSection.EntryTime);
                         }
                      }
                   }
@@ -100,12 +102,14 @@ namespace TrainScheduler.Solver {
 
             // ----------------------------------------------------
             //Log($"Add current train resource occupation ... ");
-            foreach (var section in trainRun.TrainRunSections) {
-               foreach (var resId in section.UnderlyingEdge.ResourceOccupations) {
+            foreach (var runSection in trainRun.TrainRunSections) {
+               var section = problem.TryGetRouteSection(runSection.Key);
+
+               foreach (var resId in section.ResourceIds) {
                   var resource = problem.TryGetResource(resId);
                   if (resource != null) {
-                     usedResources.Add(resId, trainRun.ServiceIntentionId, section.SequenceNumber,
-                        section.EntryTime, section.ExitTime + resource.ReleaseTime);
+                     usedResources.Add(resId, trainRun.ServiceIntentionId, runSection.SequenceNumber,
+                        runSection.EntryTime, runSection.ExitTime + resource.ReleaseTime);
                   }
                }
             }

@@ -73,5 +73,9 @@ namespace TrainScheduler.UI
 
             txtValidationError.Visible = picValidation.Visible = btnValidate.Enabled = true;
         }
-    }
+
+      private void btnOpenSolution_Click(object sender, System.EventArgs e) {
+         Program.MainForm?.openSolution_Click(sender, e);
+      }
+   }
 }

@@ -22,15 +22,8 @@ namespace TrainScheduler.Data
         public List<RouteSection> RouteSections
         {
             get => _routeSections;
-            private set
-            {
-                _routeSections = value;
-                RouteSectionDic = _routeSections.ToDictionary(s => s.SequenceNumber);
-            }
+            private set => _routeSections = value;
         }
-
-        [IgnoreDataMember]
-        public Dictionary<int, RouteSection> RouteSectionDic { get; private set; }
 
         protected override void CopyFrom(object other)
         {

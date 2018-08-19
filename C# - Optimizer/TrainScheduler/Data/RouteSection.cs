@@ -76,7 +76,13 @@ namespace TrainScheduler.Data
         [DataMember(Name = "section_marker", Order = 9)]
         public List<string> SectionMarkers { get; private set; }
 
-        protected override void CopyFrom(object other)
+       [IgnoreDataMember]
+       public string SectionMarker => SectionMarkers?.FirstOrDefault();
+
+       [IgnoreDataMember]
+       public IEnumerable<string> ResourceIds => ResourceOccupations?.Select(ro => ro.Resource);
+
+       protected override void CopyFrom(object other)
         {
             if (other is RouteSection src)
             {

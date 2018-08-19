@@ -8,6 +8,7 @@ namespace TrainScheduler.Solver {
    public abstract class BaseSolver {
       public enum SolverType {
          DummySolver,
+         IterativeDummySolver,
          IterativeConflictSolver,
          SmarterConflictSolver
       }
@@ -31,6 +32,8 @@ namespace TrainScheduler.Solver {
          switch (type) {
             case SolverType.DummySolver:
                return new DummySolver();
+            case SolverType.IterativeDummySolver:
+               return new IterativeDummySolver();
             case SolverType.IterativeConflictSolver:
                return new IterativeConflictSolver();
             case SolverType.SmarterConflictSolver:
@@ -58,33 +61,38 @@ namespace TrainScheduler.Solver {
       /// <summary>
       /// Schedule all train in an enumeration diregarding resource occupation and connections
       /// </summary>
-      public static void BasicSchedule(IEnumerable<TrainRun> trains) {
+      public void BasicSchedule(IEnumerable<TrainRun> trains) {
          foreach (var trainRun in trains) {
             // ----------------------------------------------------
             for (int k = 0; k < trainRun.TrainRunSections.Count; ++k) {
-               var thisSection = trainRun.TrainRunSections[k];
-               var nextSection = (k < trainRun.TrainRunSections.Count - 1)
+               var thisRunSection = trainRun.TrainRunSections[k];
+               var nextRunSection = (k < trainRun.TrainRunSections.Count - 1)
                   ? trainRun.TrainRunSections[k + 1]
                   : null;
 
+               var thisSection = CurrentProblem.TryGetRouteSection(thisRunSection.Key);
+               var nextSection = CurrentProblem.TryGetRouteSection(nextRunSection?.Key);
+
                // ------------------------------------------------
                // Is there a min entry/exit time 
-               var thisRequirement = trainRun.Train.GetRequirement(thisSection.SectionMarker);
+               var thisRequirement = trainRun.Train.GetRequirement(thisSection?.SectionMarker);
                var nextRequirement = trainRun.Train.GetRequirement(nextSection?.SectionMarker);
 
                // ------------------------------------------------
                // Start time is always last exit time unless this is the first section
-               thisSection.EntryTime = k > 0 ? trainRun.TrainRunSections[k - 1].ExitTime : thisRequirement.minEntryTime;
+               thisRunSection.EntryTime = k > 0 ? trainRun.TrainRunSections[k - 1].ExitTime : thisRequirement.minEntryTime;
 
                // ------------------------------------------------
                // Set exit time
-               thisSection.ExitTime = Math.Max(thisRequirement.minExitTime,
-                  thisSection.EntryTime + thisSection.UnderlyingEdge.MinimumRunningTime +
+               thisRunSection.ExitTime = Math.Max(thisRequirement.minExitTime,
+                  thisRunSection.EntryTime + thisSection.MinimumRunningTime +
                   thisRequirement.minStoppingTime);
 
                // Consider minEntryTime for next section
-               thisSection.ExitTime = Math.Max(thisSection.ExitTime, nextRequirement.minEntryTime);
+               thisRunSection.ExitTime = Math.Max(thisRunSection.ExitTime, nextRequirement.minEntryTime);
             }
+
+            trainRun.IsScheduled = true;
          }
       } 
 
