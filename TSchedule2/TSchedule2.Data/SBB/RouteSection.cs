@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using TSchedule2.Data.Utils;
 
-namespace TSchedule2.Data.Input {
+namespace TSchedule2.Data.SBB {
    [DataContract]
    public class RouteSection {
       [DataMember(Name = "sequence_number", Order = 1)]

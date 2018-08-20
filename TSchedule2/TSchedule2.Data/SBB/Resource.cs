@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using TSchedule2.Data.Utils;
 
-namespace TSchedule2.Data.Input {
+namespace TSchedule2.Data.SBB {
    [DataContract]
    public class Resource {
       [DataMember(Name = "id", Order = 1)]

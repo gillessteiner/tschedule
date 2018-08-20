@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace TSchedule2.Data.Input {
+namespace TSchedule2.Data.SBB {
    [DataContract]
    public class ProblemInstance {
       public ProblemInstance() { }

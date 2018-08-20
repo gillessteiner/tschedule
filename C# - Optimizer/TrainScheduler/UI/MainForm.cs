@@ -14,7 +14,6 @@ namespace TrainScheduler.UI {
             if (CurrentProblem == null)
                return true;
 
-
             return (MessageBox.Show("A problem is currently loaded, are you sure you want to quit?",
                        "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) ==
                     DialogResult.Yes);

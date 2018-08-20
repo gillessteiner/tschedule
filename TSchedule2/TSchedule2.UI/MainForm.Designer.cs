@@ -25,13 +25,105 @@
       /// the contents of this method with the code editor.
       /// </summary>
       private void InitializeComponent() {
-         this.components = new System.ComponentModel.Container();
+         this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+         this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.openProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveSolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.openSolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+         this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
+         this.saveJsonFileDialog = new System.Windows.Forms.SaveFileDialog();
+         this.menuStrip1.SuspendLayout();
+         this.SuspendLayout();
+         // 
+         // menuStrip1
+         // 
+         this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+         this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+         this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+         this.menuStrip1.Name = "menuStrip1";
+         this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+         this.menuStrip1.TabIndex = 1;
+         this.menuStrip1.Text = "menuStrip1";
+         // 
+         // fileToolStripMenuItem
+         // 
+         this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openProblemToolStripMenuItem,
+            this.saveSolutionToolStripMenuItem,
+            this.openSolutionToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.closeToolStripMenuItem});
+         this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+         this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+         this.fileToolStripMenuItem.Text = "File";
+         // 
+         // openProblemToolStripMenuItem
+         // 
+         this.openProblemToolStripMenuItem.Name = "openProblemToolStripMenuItem";
+         this.openProblemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+         this.openProblemToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+         this.openProblemToolStripMenuItem.Text = "Open problem ...";
+         this.openProblemToolStripMenuItem.Click += new System.EventHandler(this.openProblemToolStripMenuItem_Click);
+         // 
+         // saveSolutionToolStripMenuItem
+         // 
+         this.saveSolutionToolStripMenuItem.Enabled = false;
+         this.saveSolutionToolStripMenuItem.Name = "saveSolutionToolStripMenuItem";
+         this.saveSolutionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+         this.saveSolutionToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+         this.saveSolutionToolStripMenuItem.Text = "Save solution ...";
+         this.saveSolutionToolStripMenuItem.Click += new System.EventHandler(this.saveSolutionToolStripMenuItem_Click);
+         // 
+         // openSolutionToolStripMenuItem
+         // 
+         this.openSolutionToolStripMenuItem.Enabled = false;
+         this.openSolutionToolStripMenuItem.Name = "openSolutionToolStripMenuItem";
+         this.openSolutionToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+         this.openSolutionToolStripMenuItem.Text = "Open solution ...";
+         this.openSolutionToolStripMenuItem.Click += new System.EventHandler(this.openSolutionToolStripMenuItem_Click);
+         // 
+         // toolStripSeparator1
+         // 
+         this.toolStripSeparator1.Name = "toolStripSeparator1";
+         this.toolStripSeparator1.Size = new System.Drawing.Size(244, 6);
+         // 
+         // closeToolStripMenuItem
+         // 
+         this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+         this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+         this.closeToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+         this.closeToolStripMenuItem.Text = "Quit";
+         this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+         // 
+         // MainForm
+         // 
+         this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(800, 450);
-         this.Text = "Form1";
+         this.Controls.Add(this.menuStrip1);
+         this.Name = "MainForm";
+         this.Text = "Train Scheduler";
+         this.menuStrip1.ResumeLayout(false);
+         this.menuStrip1.PerformLayout();
+         this.ResumeLayout(false);
+         this.PerformLayout();
+
       }
 
       #endregion
+
+      private System.Windows.Forms.MenuStrip menuStrip1;
+      private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem openProblemToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem saveSolutionToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem openSolutionToolStripMenuItem;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+      private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+      private System.Windows.Forms.OpenFileDialog openJsonFileDialog;
+      private System.Windows.Forms.SaveFileDialog saveJsonFileDialog;
    }
 }
 

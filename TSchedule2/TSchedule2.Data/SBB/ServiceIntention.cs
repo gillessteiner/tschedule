@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace TSchedule2.Data.Input {
+namespace TSchedule2.Data.SBB {
    [DataContract]
    public class ServiceIntention {
       public ServiceIntention() { }
