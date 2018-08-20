@@ -72,7 +72,7 @@ namespace TSchedule2 {
          }
       }
 
-      private void openSolutionToolStripMenuItem_Click(object sender, EventArgs e) {
+      internal void openSolutionToolStripMenuItem_Click(object sender, EventArgs e) {
          // Displays an OpenFileDialog so the user can select a Cursor.  
          openJsonFileDialog.Filter = "JSON Files|*.json|All Files|*.*";
          openJsonFileDialog.Title = "Select a Problem Instance File";

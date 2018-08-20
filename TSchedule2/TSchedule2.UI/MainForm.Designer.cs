@@ -1,4 +1,6 @@
-﻿namespace TSchedule2
+﻿using TSchedule2.Views;
+
+namespace TSchedule2
 {
    partial class MainForm
    {
@@ -34,7 +36,16 @@
          this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
          this.saveJsonFileDialog = new System.Windows.Forms.SaveFileDialog();
+         this.tabControl1 = new System.Windows.Forms.TabControl();
+         this.tabProblem = new System.Windows.Forms.TabPage();
+         this.tabSolver = new System.Windows.Forms.TabPage();
+         this.tabSolution = new System.Windows.Forms.TabPage();
+            this.problemView = new ProblemView();
+         this.solverView = new TSchedule2.Views.SolverView();
+         this.solutionView = new SolutionView();
          this.menuStrip1.SuspendLayout();
+         this.tabControl1.SuspendLayout();
+         this.tabSolver.SuspendLayout();
          this.SuspendLayout();
          // 
          // menuStrip1
@@ -98,16 +109,86 @@
          this.closeToolStripMenuItem.Text = "Quit";
          this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
          // 
+         // tabControl1
+         // 
+         this.tabControl1.Controls.Add(this.tabProblem);
+         this.tabControl1.Controls.Add(this.tabSolver);
+         this.tabControl1.Controls.Add(this.tabSolution);
+         this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.tabControl1.Location = new System.Drawing.Point(0, 28);
+         this.tabControl1.Name = "tabControl1";
+         this.tabControl1.SelectedIndex = 0;
+         this.tabControl1.Size = new System.Drawing.Size(800, 422);
+         this.tabControl1.TabIndex = 2;
+         // 
+         // tabProblem
+         // 
+         this.tabProblem.Controls.Add(this.problemView);
+         this.tabProblem.Location = new System.Drawing.Point(4, 25);
+         this.tabProblem.Name = "tabProblem";
+         this.tabProblem.Padding = new System.Windows.Forms.Padding(3);
+         this.tabProblem.Size = new System.Drawing.Size(792, 393);
+         this.tabProblem.TabIndex = 0;
+         this.tabProblem.Text = "Problem";
+         this.tabProblem.UseVisualStyleBackColor = true;
+         // 
+         // tabSolver
+         // 
+         this.tabSolver.Controls.Add(this.solverView);
+         this.tabSolver.Location = new System.Drawing.Point(4, 25);
+         this.tabSolver.Name = "tabSolver";
+         this.tabSolver.Padding = new System.Windows.Forms.Padding(3);
+         this.tabSolver.Size = new System.Drawing.Size(792, 393);
+         this.tabSolver.TabIndex = 1;
+         this.tabSolver.Text = "Solver";
+         this.tabSolver.UseVisualStyleBackColor = true;
+         // 
+         // tabSolution
+         // 
+         this.tabSolution.Controls.Add(this.solutionView);
+         this.tabSolution.Location = new System.Drawing.Point(4, 25);
+         this.tabSolution.Name = "tabSolution";
+         this.tabSolution.Size = new System.Drawing.Size(792, 393);
+         this.tabSolution.TabIndex = 2;
+         this.tabSolution.Text = "Solution";
+         this.tabSolution.UseVisualStyleBackColor = true;
+         // 
+         // problemView
+         // 
+         this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.problemView.Location = new System.Drawing.Point(3, 3);
+         this.problemView.Name = "problemView";
+         this.problemView.Size = new System.Drawing.Size(786, 387);
+         this.problemView.TabIndex = 0;// 
+         // solverView
+         // 
+         this.solverView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.solverView.Location = new System.Drawing.Point(3, 3);
+         this.solverView.Name = "solverView";
+         this.solverView.Size = new System.Drawing.Size(786, 387);
+         this.solverView.TabIndex = 1;
+         // 
+         // solverView
+         // 
+         this.solutionView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.solutionView.Location = new System.Drawing.Point(3, 3);
+         this.solutionView.Name = "solutionView";
+         this.solutionView.Size = new System.Drawing.Size(786, 387);
+         this.solutionView.TabIndex = 2;
+         // 
          // MainForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(800, 450);
+         this.Controls.Add(this.tabControl1);
          this.Controls.Add(this.menuStrip1);
          this.Name = "MainForm";
          this.Text = "Train Scheduler";
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();
+         this.tabControl1.ResumeLayout(false);
+         this.tabSolver.ResumeLayout(false);
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -124,6 +205,14 @@
       private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
       private System.Windows.Forms.OpenFileDialog openJsonFileDialog;
       private System.Windows.Forms.SaveFileDialog saveJsonFileDialog;
+      private System.Windows.Forms.TabControl tabControl1;
+      private System.Windows.Forms.TabPage tabProblem;
+      private System.Windows.Forms.TabPage tabSolver;
+      private System.Windows.Forms.TabPage tabSolution;
+      private Views.ProblemView problemView;
+      private Views.SolverView solverView;
+      private Views.SolutionView solutionView;
+
    }
 }
 
