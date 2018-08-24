@@ -1,7 +1,9 @@
 ﻿using System.Windows.Forms;
 
-namespace TSchedule2.Views {
-   public partial class BaseView : UserControl {
+namespace TSchedule2.Views
+{
+   public partial class BaseView : UserControl
+   {
       public BaseView() {
          InitializeComponent();
       }
@@ -9,7 +11,7 @@ namespace TSchedule2.Views {
       public virtual void Setup() {
          grpDefinition.Enabled = Program.MainForm?.CurrentProblem != null;
          txtLabel.Text = Program.MainForm?.CurrentProblem?.Label;
-      }
 
+      }
    }
 }

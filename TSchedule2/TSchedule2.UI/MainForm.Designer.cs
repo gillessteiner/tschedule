@@ -1,6 +1,4 @@
-﻿using TSchedule2.Views;
-
-namespace TSchedule2
+﻿namespace TSchedule2
 {
    partial class MainForm
    {
@@ -27,6 +25,7 @@ namespace TSchedule2
       /// the contents of this method with the code editor.
       /// </summary>
       private void InitializeComponent() {
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.openProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,14 +37,16 @@ namespace TSchedule2
          this.saveJsonFileDialog = new System.Windows.Forms.SaveFileDialog();
          this.tabControl1 = new System.Windows.Forms.TabControl();
          this.tabProblem = new System.Windows.Forms.TabPage();
+         this.problemView = new TSchedule2.Views.ProblemView();
          this.tabSolver = new System.Windows.Forms.TabPage();
-         this.tabSolution = new System.Windows.Forms.TabPage();
-            this.problemView = new ProblemView();
          this.solverView = new TSchedule2.Views.SolverView();
-         this.solutionView = new SolutionView();
+         this.tabSolution = new System.Windows.Forms.TabPage();
+         this.solutionView = new TSchedule2.Views.SolutionView();
          this.menuStrip1.SuspendLayout();
          this.tabControl1.SuspendLayout();
+         this.tabProblem.SuspendLayout();
          this.tabSolver.SuspendLayout();
+         this.tabSolution.SuspendLayout();
          this.SuspendLayout();
          // 
          // menuStrip1
@@ -132,6 +133,14 @@ namespace TSchedule2
          this.tabProblem.Text = "Problem";
          this.tabProblem.UseVisualStyleBackColor = true;
          // 
+         // problemView
+         // 
+         this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.problemView.Location = new System.Drawing.Point(3, 3);
+         this.problemView.Name = "problemView";
+         this.problemView.Size = new System.Drawing.Size(786, 387);
+         this.problemView.TabIndex = 0;
+         // 
          // tabSolver
          // 
          this.tabSolver.Controls.Add(this.solverView);
@@ -143,6 +152,14 @@ namespace TSchedule2
          this.tabSolver.Text = "Solver";
          this.tabSolver.UseVisualStyleBackColor = true;
          // 
+         // solverView
+         // 
+         this.solverView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.solverView.Location = new System.Drawing.Point(3, 3);
+         this.solverView.Name = "solverView";
+         this.solverView.Size = new System.Drawing.Size(786, 387);
+         this.solverView.TabIndex = 0;
+         // 
          // tabSolution
          // 
          this.tabSolution.Controls.Add(this.solutionView);
@@ -153,28 +170,13 @@ namespace TSchedule2
          this.tabSolution.Text = "Solution";
          this.tabSolution.UseVisualStyleBackColor = true;
          // 
-         // problemView
-         // 
-         this.problemView.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.problemView.Location = new System.Drawing.Point(3, 3);
-         this.problemView.Name = "problemView";
-         this.problemView.Size = new System.Drawing.Size(786, 387);
-         this.problemView.TabIndex = 0;// 
-         // solverView
-         // 
-         this.solverView.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.solverView.Location = new System.Drawing.Point(3, 3);
-         this.solverView.Name = "solverView";
-         this.solverView.Size = new System.Drawing.Size(786, 387);
-         this.solverView.TabIndex = 1;
-         // 
-         // solverView
+         // solutionView
          // 
          this.solutionView.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.solutionView.Location = new System.Drawing.Point(3, 3);
+         this.solutionView.Location = new System.Drawing.Point(0, 0);
          this.solutionView.Name = "solutionView";
-         this.solutionView.Size = new System.Drawing.Size(786, 387);
-         this.solutionView.TabIndex = 2;
+         this.solutionView.Size = new System.Drawing.Size(792, 393);
+         this.solutionView.TabIndex = 0;
          // 
          // MainForm
          // 
@@ -183,12 +185,15 @@ namespace TSchedule2
          this.ClientSize = new System.Drawing.Size(800, 450);
          this.Controls.Add(this.tabControl1);
          this.Controls.Add(this.menuStrip1);
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "MainForm";
          this.Text = "Train Scheduler";
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();
          this.tabControl1.ResumeLayout(false);
+         this.tabProblem.ResumeLayout(false);
          this.tabSolver.ResumeLayout(false);
+         this.tabSolution.ResumeLayout(false);
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -212,7 +217,6 @@ namespace TSchedule2
       private Views.ProblemView problemView;
       private Views.SolverView solverView;
       private Views.SolutionView solutionView;
-
    }
 }
 

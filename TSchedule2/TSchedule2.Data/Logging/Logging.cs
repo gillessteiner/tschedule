@@ -14,5 +14,8 @@ namespace TSchedule2.Data
       }
 
       public delegate void LogEventHandler(object sender, LogEventArgs e);
+
+      public static readonly string HorizontalLine = new string('-', 100);
+
    }
 }

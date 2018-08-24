@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace TSchedule2.Data.Utils
 {
@@ -32,6 +35,10 @@ namespace TSchedule2.Data.Utils
 
       public static string AlignCenter(this string text, int space) {
          return text.Length < space ? text.PadLeft((text.Length + space) / 2) : text;
+      }
+
+      public static T[] Shuffle<T>(this IEnumerable<T> source) {
+         return source.OrderBy(x => Math.RndGenerator.Next()).ToArray();
       }
    }
 }

@@ -2,18 +2,21 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using TSchedule2.Data;
+using TSchedule2.Solver;
 
-namespace TSchedule2.Views {
-   public partial class SolverView : BaseView {
+namespace TSchedule2.Views
+{
+   public partial class SolverView : BaseView
+   {
       public SolverView() {
          InitializeComponent();
-        // cboSolverList.DataSource = Enum.GetValues(typeof(BaseSolver.SolverType));
+         cboSolverList.DataSource = Enum.GetValues(typeof(BaseSolver.SolverType));
       }
 
-      //private BaseSolver.SolverType SelectedSolver => Enum.TryParse<BaseSolver.SolverType>(cboSolverList.SelectedValue.ToString(), out var value) ? value : BaseSolver.SolverType.DummySolver;
+      private BaseSolver.SolverType SelectedSolver => Enum.TryParse<BaseSolver.SolverType>(cboSolverList.SelectedValue.ToString(), out var value) ? value : BaseSolver.SolverType.DummySolver;
 
-      private int MaxIter => ((int) numMaxIter.Value);
-      private int SubIter => ((int) numSubIter.Value);
+      private int MaxIter => ((int)numMaxIter.Value);
+      private int SubIter => ((int)numSubIter.Value);
 
       private void btnSolve_Click(object sender, EventArgs e) {
          if (Program.MainForm.CurrentSolution != null) {
@@ -28,25 +31,24 @@ namespace TSchedule2.Views {
          logSolver.WriteTitle($"{DateTime.Now:F}, start");
 
          logSolver.ReportInfo($"Problem:             {Program.MainForm.CurrentProblem.Label}");
-         //logSolver.ReportInfo($"Solver type:         {SelectedSolver.ToString()}");
+         logSolver.ReportInfo($"Solver type:         {SelectedSolver.ToString()}");
          logSolver.ReportInfo($"Solver max nb iters: {MaxIter:N0}");
 
          var timer = Stopwatch.StartNew();
 
          try {
-            /*
-            var solver = BaseSolver.Create(SelectedSolver);
-            solver.MaxIteration = MaxIter;
-            solver.SubIteration = SubIter;
 
-            solver.Logging += SolverLogging;
+            using (var solver = BaseSolver.Create(SelectedSolver)) {
+               solver.MaxIteration = MaxIter;
+               solver.SubIteration = SubIter;
+               solver.Logging += SolverLogging;
 
-            solver.Init(Program.MainForm.CurrentProblem);
-            Program.MainForm.CurrentSolution = solver.Run();
-            Program.MainForm.CurrentSolution?.Update();
+               solver.Init(Program.MainForm.CurrentProblem);
+               Program.MainForm.CurrentSolution = solver.Run();
 
-            solver.Logging -= SolverLogging;
-            */
+               solver.Logging -= SolverLogging;
+            }
+
          }
          catch (Exception ex) {
             logSolver.ReportError(ex.Message);

@@ -4,12 +4,12 @@ using TSchedule2.Data.Utils;
 
 namespace TSchedule2.Data.SBB {
    [DataContract]
-   public class Resource {
+   internal class Resource {
       [DataMember(Name = "id", Order = 1)]
-      public string Id { get; private set; }
+      internal string Id { get; private set; }
 
       [IgnoreDataMember]
-      public TimeSpan ReleaseTime { get; private set; }
+      internal TimeSpan ReleaseTime { get; private set; }
 
       [DataMember(Name = "release_time", Order = 2)]
       private string ReleaseTimeStr {
@@ -18,6 +18,6 @@ namespace TSchedule2.Data.SBB {
       }
 
       [DataMember(Name = "following_allowed", Order = 3)]
-      public bool FollowingAllowed { get; private set; }
+      internal bool FollowingAllowed { get; private set; }
    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using TSchedule2.Data.Model;
 using TSchedule2.Data.SBB;
 
 namespace TSchedule2 {
@@ -9,15 +10,15 @@ namespace TSchedule2 {
          InitializeComponent();
       }
 
-      private ProblemInstance _currentProblem;
+      private Problem  _currentProblem;
       private Solution _currentsolution;
 
-      internal ProblemInstance CurrentProblem {
+      internal Problem CurrentProblem {
          get => _currentProblem;
          set {
             _currentProblem = value;
-            // problemView.Setup();
-            // solverView.Setup();
+            problemView.Setup();
+            solverView.Setup();
             openSolutionToolStripMenuItem.Enabled = true;
          }
       }
@@ -26,7 +27,7 @@ namespace TSchedule2 {
          get => _currentsolution;
          set {
             _currentsolution = value;
-            // solutionView.Setup();
+            solutionView.Setup();
             saveSolutionToolStripMenuItem.Enabled = _currentsolution != null;
          }
       }
@@ -49,7 +50,7 @@ namespace TSchedule2 {
 
          if (openJsonFileDialog.ShowDialog() == DialogResult.OK) {
             try {
-               CurrentProblem = ProblemInstance.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
+               CurrentProblem = new Problem(ProblemInstance.FromJson(File.ReadAllText(openJsonFileDialog.FileName)));
             }
             catch (Exception ex) {
                MessageBox.Show(ex.Message, "File opening failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -81,6 +82,7 @@ namespace TSchedule2 {
             try {
                var solution = Solution.FromJson(File.ReadAllText(openJsonFileDialog.FileName));
                solution.Problem = CurrentProblem;
+               solution.EvalObjectiveFunction();
                CurrentSolution = solution; // When we assign the CurrentSolution, it must be complete
             }
             catch (Exception ex) {

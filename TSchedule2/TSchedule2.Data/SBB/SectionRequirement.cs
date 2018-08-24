@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.Serialization;
 using TSchedule2.Data.Utils;
 
 namespace TSchedule2.Data.SBB {
    [DataContract]
    public class SectionRequirement {
-      public SectionRequirement() { }
-
       [DataMember(Name = "sequence_number", Order = 1)]
       public int SequenceNumber { get; private set; }
 
@@ -23,73 +22,68 @@ namespace TSchedule2.Data.SBB {
       }
 
       [IgnoreDataMember]
-      public DateTime? EntryEarliest { get; private set; }
+      public DateTime EntryEarliest { get; private set; } = DateTime.MinValue;
 
       [DataMember(Name = "entry_earliest", Order = 4)]
       private string EntryEarliestStr {
-         get => EntryEarliest?.ToLongTimeString();
-         set {
-            if (value != null) {
-               EntryEarliest = DateTime.Parse(value);
-            }
-            else
-               EntryEarliest = null;
-         }
+         get => (EntryEarliest != DateTime.MinValue) ? EntryEarliest.ToLongTimeString() : null;
+         set => EntryEarliest = value != null ? DateTime.Parse(value) : DateTime.MinValue;
       }
 
       [IgnoreDataMember]
-      public DateTime? EntryLatest { get; private set; }
+      public DateTime EntryLatest { get; internal set; } = DateTime.MaxValue;
 
       [DataMember(Name = "entry_latest", Order = 5)]
       private string EntryLatestStr {
-         get => EntryLatest?.ToLongTimeString();
-         set {
-            if (value != null) {
-               EntryLatest = DateTime.Parse(value);
-            }
-            else
-               EntryLatest = null;
-         }
+         get => (EntryLatest != DateTime.MaxValue) ? EntryLatest.ToLongTimeString() : null;
+         set => EntryLatest = (value != null) ? DateTime.Parse(value) : DateTime.MaxValue;
       }
 
       [IgnoreDataMember]
-      public DateTime? ExitEarliest { get; private set; }
+      public DateTime ExitEarliest { get; private set; } = DateTime.MinValue;
 
       [DataMember(Name = "exit_earliest", Order = 6)]
       private string ExitEarliestSrc {
-         get => ExitEarliest?.ToLongTimeString();
+         get => (ExitEarliest != DateTime.MinValue) ? ExitEarliest.ToLongTimeString() : null;
+         set => ExitEarliest = value != null ? DateTime.Parse(value) : DateTime.MinValue;
+      }
+
+      [IgnoreDataMember]
+      public DateTime ExitLatest { get; internal set; } = DateTime.MaxValue;
+
+      [DataMember(Name = "exit_latest", Order = 7)]
+      private string ExitLatestSrc {
+         get => (ExitLatest != DateTime.MaxValue) ? ExitLatest.ToLongTimeString() : null;
+         set => ExitLatest = value != null ? DateTime.Parse(value) : DateTime.MaxValue;
+      }
+
+      [IgnoreDataMember]
+      public double EntryDelayWeight { get; private set; } = 0.0;
+
+      [DataMember(Name = "entry_delay_weight", Order = 8)]
+      private string EntryDelayWeightStr {
+         get => EntryDelayWeight.ToString(CultureInfo.InvariantCulture);
          set {
             if (value != null) {
-               ExitEarliest = DateTime.Parse(value);
+               EntryDelayWeight = double.Parse(value);
             }
-            else
-               ExitEarliest = null;
          }
       }
 
       [IgnoreDataMember]
-      public DateTime? ExitLatest { get; private set; }
+      public double ExitDelayWeight { get; private set; } = 0.0;
 
-      [DataMember(Name = "exit_latest", Order = 7)]
-      private string ExitLatestSrc {
-         get => ExitLatest?.ToLongTimeString();
+      [DataMember(Name = "exit_delay_weight", Order = 9)]
+      private string ExitDelayWeightStr {
+         get => ExitDelayWeight.ToString(CultureInfo.InvariantCulture);
          set {
             if (value != null) {
-               ExitLatest = DateTime.Parse(value);
+               ExitDelayWeight = double.Parse(value);
             }
-            else
-               ExitLatest = null;
          }
       }
 
-      [DataMember(Name = "entry_delay_weight", Order = 8)]
-      public double? EntryDelayWeight { get; private set; }
-
-      [DataMember(Name = "exit_delay_weight", Order = 9)]
-      public double? ExitDelayWeight { get; private set; }
-
       [DataMember(Name = "connections", Order = 10)]
       public Connection[] Connections { get; private set; }
-
    }
 }

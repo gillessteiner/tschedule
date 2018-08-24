@@ -6,7 +6,6 @@ using System.Text;
 namespace TSchedule2.Data.SBB {
    [DataContract]
    public class ProblemInstance {
-      public ProblemInstance() { }
 
       #region SBB Data Model
 
@@ -17,13 +16,13 @@ namespace TSchedule2.Data.SBB {
       public int Hash { get; private set; }
 
       [DataMember(Name = "service_intentions", Order = 3)]
-      public ServiceIntention[] ServiceIntentions { get; private set; }
+      internal ServiceIntention[] ServiceIntentions { get; private set; }
 
       [DataMember(Name = "routes", Order = 4)]
-      public Route[] Routes { get; private set; }
+      internal Route[] Routes { get; private set; }
 
       [DataMember(Name = "resources", Order = 5)]
-      public Resource[] Resources { get; private set; }
+      internal Resource[] Resources { get; private set; }
 
       #endregion
 
