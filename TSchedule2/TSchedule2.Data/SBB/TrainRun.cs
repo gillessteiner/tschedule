@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using TSchedule2.Data.Model;
+using Data.Model;
 
-namespace TSchedule2.Data.SBB {
+namespace Data.SBB {
    [DataContract]
    public class TrainRun {
       public TrainRun(Train train) {
@@ -23,8 +23,12 @@ namespace TSchedule2.Data.SBB {
 
       #endregion
 
-      public void AssignPath(IEnumerable<Section> sections) {
-         TrainRunSections = sections.Select(s => new Section(s)).ToList();
+      public void AssignPath(Train train, IEnumerable<Section> sections, bool reinit = true) {
+         TrainRunSections = sections.Select(s => new Section(s, reinit)).ToList();
+
+         foreach (var section in TrainRunSections) {
+            section.SectionRequirement = train.RequirementKeys.Contains(section.SectionMarker) ? section.SectionMarker : null;
+         }
       }
    }
 }

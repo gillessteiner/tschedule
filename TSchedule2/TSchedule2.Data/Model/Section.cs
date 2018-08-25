@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.Serialization;
-using TSchedule2.Data.SBB;
+using Data.SBB;
+using Math = Utils.Math;
 
-namespace TSchedule2.Data.Model
+namespace Data.Model
 {
    [DataContract]
    public class Section
@@ -14,15 +15,17 @@ namespace TSchedule2.Data.Model
          Index = index;
          SequenceNumber = section.SequenceNumber;
          MinimumRunningTime = section.MinimumRunningTime;
+         ResourcesOccupied = section.ResourceOccupations.Any() ? section.ResourceOccupations.Select(r => r.ResourceId).ToArray() : new string[0];
          Penalty = section.Penalty ?? 0;
          AlternativeMarkerAtEntry = section.AlternativeMarkerAtEntry;
          AlternativeMarkerAtExit = section.AlternativeMarkerAtExit;
          SectionMarker = section.SectionMarkers?.FirstOrDefault();
+
          Key = GetKey(RouteId, SequenceNumber);
       }
 
       // Deep copy
-      public Section(Section other) {
+      public Section(Section other, bool reinit = true) {
          RouteId = other.RouteId;
          RoutePathId = other.RoutePathId;
          SequenceNumber = other.SequenceNumber;
@@ -37,8 +40,12 @@ namespace TSchedule2.Data.Model
          Key = other.Key;
 
          // Reinit these
-         EntryTime = ExitTime = DateTime.Today;
-
+         if(reinit)
+            EntryTime = ExitTime = DateTime.Today;
+         else {
+            EntryTime = other.EntryTime;
+            ExitTime = other.ExitTime;
+         }
       }  
       
       #region From Problem
@@ -55,7 +62,7 @@ namespace TSchedule2.Data.Model
       public TimeSpan MinimumRunningTime { get; private set; }
 
       [IgnoreDataMember]
-      public Resource[] ResourcesOccupied { get; private set; }
+      public string[] ResourcesOccupied { get; private set; }
 
       [IgnoreDataMember]
       internal double Penalty { get; private set; }
@@ -105,8 +112,10 @@ namespace TSchedule2.Data.Model
       }
 
       [DataMember(Name = "section_requirement", Order = 7)]
-      public string SectionRequirement { get; private set; }
+      public string SectionRequirement { get; internal set; }
 
+      [IgnoreDataMember]
+      public Math.Period OccupiedPeriod => new Math.Period(EntryTime, ExitTime);
       #endregion
 
    }

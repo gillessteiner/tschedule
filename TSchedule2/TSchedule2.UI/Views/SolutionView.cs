@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Data.Model;
 using Microsoft.Msagl.GraphViewerGdi;
-using TSchedule2.Data.Model;
 using TSchedule2.Properties;
 
 namespace TSchedule2.Views

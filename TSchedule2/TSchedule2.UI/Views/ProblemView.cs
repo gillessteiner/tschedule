@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using Data.Model;
 using Microsoft.Msagl.GraphViewerGdi;
-using TSchedule2.Data.Model;
 
 namespace TSchedule2.Views {
    public partial class ProblemView : BaseView {

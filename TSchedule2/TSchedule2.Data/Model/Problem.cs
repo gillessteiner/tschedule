@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using TSchedule2.Data.SBB;
+using Data.SBB;
 
-namespace TSchedule2.Data.Model
+namespace Data.Model
 {
    public class Problem
    {
@@ -12,7 +11,7 @@ namespace TSchedule2.Data.Model
          Label = problemInstance.Label;
 
          _tracks = problemInstance.Routes.ToDictionary(r => r.Id, r => new Track(r));
-         _resources = problemInstance.Resources.ToDictionary(r => r.Id, r => new Resource(r.ReleaseTime));
+         _resources = problemInstance.Resources.ToDictionary(r => r.Id, r => new Resource(r.Id, r.ReleaseTime));
          _trains = problemInstance.ServiceIntentions.ToDictionary(s => s.Id, s => new Train(s.Id, _tracks[s.Route], s.SectionRequirements));
       }
 

@@ -5,11 +5,11 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
-using TSchedule2.Data.Model;
-using TSchedule2.Data.Utils;
+using Data.Model;
+using Utils;
 using Math = System.Math;
 
-namespace TSchedule2.Data.SBB
+namespace Data.SBB
 {
    [DataContract]
    public class Solution : Serializable
@@ -254,6 +254,15 @@ namespace TSchedule2.Data.SBB
 
       public IEnumerable<TrainRun> GetTrainRuns(IEnumerable<string> trainIds) {
          return trainIds.Select(GetTrainRun);
+      }
+
+      public Solution Clone() {
+         var res = new Solution(Problem);
+         foreach (var train in TrainKeys) {
+            res.TrainRunsDic[train].AssignPath(Problem.GetTrain(train), this.TrainRunsDic[train].TrainRunSections, false);
+         }
+         res.EvalObjectiveFunction();
+         return res;
       }
    }
 }

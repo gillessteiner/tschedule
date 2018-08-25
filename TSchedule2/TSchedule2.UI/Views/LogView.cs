@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using TSchedule2.Data;
-using TSchedule2.Data.Utils;
+using Utils;
 using Math = System.Math;
 
 namespace TSchedule2.Views

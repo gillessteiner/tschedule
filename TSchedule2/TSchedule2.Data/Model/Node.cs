@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TSchedule2.Data.Model {
+namespace Data.Model {
    internal class Node {
       internal Node(string marker) {
          Marker = marker;

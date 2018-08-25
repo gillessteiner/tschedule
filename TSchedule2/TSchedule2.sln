@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSchedule2.UI", "TSchedule2.UI\TSchedule2.UI.csproj", "{9BC3E9D6-861F-4513-A8D7-F8089B9B845E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "TSchedule2.UI\UI.csproj", "{9BC3E9D6-861F-4513-A8D7-F8089B9B845E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSchedule2.Data", "TSchedule2.Data\TSchedule2.Data.csproj", "{EE9DD371-7A06-419B-942B-4CF15897A42F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "TSchedule2.Data\Data.csproj", "{EE9DD371-7A06-419B-942B-4CF15897A42F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSchedule2.Solver", "TSchedule2.Solver\TSchedule2.Solver.csproj", "{1AC68513-36CE-4D53-B760-AD0C5C65CE2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver", "TSchedule2.Solver\Solver.csproj", "{1AC68513-36CE-4D53-B760-AD0C5C65CE2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{7868FD85-689E-4FD6-8406-DF6DFCF83A0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1AC68513-36CE-4D53-B760-AD0C5C65CE2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AC68513-36CE-4D53-B760-AD0C5C65CE2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AC68513-36CE-4D53-B760-AD0C5C65CE2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7868FD85-689E-4FD6-8406-DF6DFCF83A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7868FD85-689E-4FD6-8406-DF6DFCF83A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7868FD85-689E-4FD6-8406-DF6DFCF83A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7868FD85-689E-4FD6-8406-DF6DFCF83A0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

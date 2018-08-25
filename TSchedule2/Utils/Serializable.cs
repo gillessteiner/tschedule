@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace TSchedule2.Data.Utils
+namespace Utils
 {
    /// <summary>
    /// Method to serialize to json

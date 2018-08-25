@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Data.SBB;
 using Microsoft.Msagl.Drawing;
-using TSchedule2.Data.SBB;
 
-namespace TSchedule2.Data.Model {
+namespace Data.Model {
    public class Track : Graph // A track can be visualized as a MSAGL graph
    {
       public Track(Route route) {
@@ -106,7 +106,5 @@ namespace TSchedule2.Data.Model {
 
          _paths = activePaths.OrderBy(p => p.Penalty).ToArray();
       }
-
-
    }
 }

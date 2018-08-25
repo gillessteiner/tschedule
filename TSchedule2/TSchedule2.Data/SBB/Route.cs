@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace TSchedule2.Data.SBB {
+namespace Data.SBB {
    [DataContract]
    public class Route {
       #region SBB Data Model

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace TSchedule2.Data.SBB {
+namespace Data.SBB {
    [DataContract]
    internal class ServiceIntention {
       [DataMember(Name = "id")]

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using TSchedule2.Data.Utils;
+using Utils;
 
-namespace TSchedule2.Data.SBB {
+namespace Data.SBB {
    [DataContract]
    internal class Resource {
       [DataMember(Name = "id", Order = 1)]

@@ -74,11 +74,6 @@
          // 
          // numSubIter
          // 
-         this.numSubIter.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
          this.numSubIter.Location = new System.Drawing.Point(418, 99);
          this.numSubIter.Maximum = new decimal(new int[] {
             1000000,
@@ -96,11 +91,10 @@
          this.numSubIter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          this.numSubIter.ThousandsSeparator = true;
          this.numSubIter.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
-         this.numSubIter.Visible = false;
          // 
          // labSubIter
          // 
@@ -110,7 +104,6 @@
          this.labSubIter.Size = new System.Drawing.Size(55, 17);
          this.labSubIter.TabIndex = 31;
          this.labSubIter.Text = "subIter:";
-         this.labSubIter.Visible = false;
          // 
          // btnSolve
          // 
@@ -125,11 +118,6 @@
          // 
          // numMaxIter
          // 
-         this.numMaxIter.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
          this.numMaxIter.Location = new System.Drawing.Point(156, 99);
          this.numMaxIter.Maximum = new decimal(new int[] {
             1000000,

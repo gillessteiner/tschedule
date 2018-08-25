@@ -1,13 +1,15 @@
 ﻿using System;
 
-namespace TSchedule2.Data.Model
+namespace Data.Model
 {
    public class Resource
    {
-      public Resource(TimeSpan releaseTime) {
+      public Resource(string id, TimeSpan releaseTime) {
+         Id = id;
          ReleaseTime = releaseTime;
       }
 
-      internal TimeSpan ReleaseTime { get; private set; } = TimeSpan.Zero;
+      public string Id { get; private set; }
+      public TimeSpan ReleaseTime { get; private set; }
    }
 }

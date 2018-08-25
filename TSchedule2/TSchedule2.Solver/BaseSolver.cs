@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using TSchedule2.Data;
-using TSchedule2.Data.Model;
-using TSchedule2.Data.SBB;
-using Math = TSchedule2.Data.Utils.Math;
+using Data;
+using Data.Model;
+using Data.SBB;
+using Utils;
+using Math = Utils.Math;
 
-namespace TSchedule2.Solver
+namespace Solver
 {
    public abstract class BaseSolver : IDisposable
    {
@@ -14,13 +15,13 @@ namespace TSchedule2.Solver
          DummySolver,
       }
 
-      public int Iteration { get; protected set; } = 1;
+      protected int Iteration { get; set; } = 1;
       public int MaxIteration { get; set; }
-      public int SubIteration { get; set; }
+      protected int SubIteration { get; set; } = 1;
+      public int MaxSubIteration { get; set; }
 
       protected Problem  CurrentProblem { get; set; }
-      protected Solution CurrentSolution { get; set; }
-      public    Solution BestSolution { get; protected set; }
+      protected Solution BestSolution { get; set; }
       
       /// <summary>
       /// Factory method for solver creation
@@ -35,13 +36,28 @@ namespace TSchedule2.Solver
       }
 
       public virtual void Init(Problem problem) {
-         Log(Data.Logging.HorizontalLine);
-         Log($"Initializing {GetType()} ...", Data.Logging.LogEventArgs.MessageType.Info , false);
+         Log(global::Utils.Logging.HorizontalLine);
+         Log($"Initializing {GetType()} ...", global::Utils.Logging.LogEventArgs.MessageType.Info , false);
          CurrentProblem = problem;
-         Log(" done.", Data.Logging.LogEventArgs.MessageType.Success);
+         Log(" done.", global::Utils.Logging.LogEventArgs.MessageType.Success);
       }
 
       public abstract Solution Run();
+
+      protected void CompareWithBest(Solution currentSolution) {
+#if DEBUG
+         currentSolution.Validate(); // In debug mode we validate the solution each time
+#endif
+         currentSolution.EvalObjectiveFunction();
+
+         if (BestSolution == null || currentSolution.ObjectiveValue < BestSolution.ObjectiveValue) {
+            BestSolution = currentSolution.Clone();
+            Log($"New solution with objective value {BestSolution.ObjectiveValue:N2}", Utils.Logging.LogEventArgs.MessageType.Success);
+         }
+         else {
+            Log($"Worse objective value {currentSolution.ObjectiveValue:N2}", Utils.Logging.LogEventArgs.MessageType.Warning);
+         }
+      }
 
       /// <summary>
       /// Schedule all train in an enumeration diregarding resource occupation and connections
@@ -77,17 +93,17 @@ namespace TSchedule2.Solver
          }
       }
 
-
       #region Event for logging 
 
       public event Logging.LogEventHandler Logging;
 
-      protected void Log(string msg, Logging.LogEventArgs.MessageType type = Data.Logging.LogEventArgs.MessageType.Info, bool newline = true) {
+      protected void Log(string msg, Logging.LogEventArgs.MessageType type = global::Utils.Logging.LogEventArgs.MessageType.Info, bool newline = true) {
          Logging?.Invoke(this, new Logging.LogEventArgs() { Message = msg, Type = type, Newline = newline });
       }
 
       #endregion
 
+      #region IDisposable
       protected virtual void Dispose(bool disposing) {
          if (disposing) { }
       }
@@ -96,5 +112,7 @@ namespace TSchedule2.Solver
          Dispose(true);
          GC.SuppressFinalize(this);
       }
+      #endregion
+
    }
 }

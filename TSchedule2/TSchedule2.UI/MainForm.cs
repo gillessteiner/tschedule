@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using TSchedule2.Data.Model;
-using TSchedule2.Data.SBB;
+using Data.Model;
+using Data.SBB;
 
 namespace TSchedule2 {
    public partial class MainForm : Form {

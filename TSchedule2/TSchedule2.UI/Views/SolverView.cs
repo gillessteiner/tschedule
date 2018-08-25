@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using TSchedule2.Data;
-using TSchedule2.Solver;
+using Solver;
+using Utils;
 
 namespace TSchedule2.Views
 {
@@ -40,7 +40,7 @@ namespace TSchedule2.Views
 
             using (var solver = BaseSolver.Create(SelectedSolver)) {
                solver.MaxIteration = MaxIter;
-               solver.SubIteration = SubIter;
+               solver.MaxSubIteration = SubIter;
                solver.Logging += SolverLogging;
 
                solver.Init(Program.MainForm.CurrentProblem);

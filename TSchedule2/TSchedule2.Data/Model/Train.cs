@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TSchedule2.Data.SBB;
+using Data.SBB;
+using Math = Utils.Math;
 
-namespace TSchedule2.Data.Model
+namespace Data.Model
 {
    public class Train
    {
@@ -31,7 +32,7 @@ namespace TSchedule2.Data.Model
       public IEnumerable<string> RequirementKeys => Requirements?.Keys;
 
       public IEnumerable<Section> GetRandomPath() {
-         return Track.GetPath(Data.Utils.Math.RndGenerator.Next(Track.NbPaths)).Sections;
+         return Track.GetPath(Math.RndGenerator.Next(Track.NbPaths)).Sections;
       }
    }
 }

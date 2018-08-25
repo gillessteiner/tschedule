@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
-using TSchedule2.Data.Utils;
+using Utils;
 
-namespace TSchedule2.Data.SBB {
+namespace Data.SBB {
    [DataContract]
    public class SectionRequirement {
       [DataMember(Name = "sequence_number", Order = 1)]

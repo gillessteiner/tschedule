@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TSchedule2.Data
+namespace Utils
 {
    public static class Logging
    {

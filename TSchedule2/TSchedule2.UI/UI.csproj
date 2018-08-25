@@ -156,13 +156,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TSchedule2.Data\TSchedule2.Data.csproj">
+    <ProjectReference Include="..\TSchedule2.Data\Data.csproj">
       <Project>{ee9dd371-7a06-419b-942b-4cf15897a42f}</Project>
-      <Name>TSchedule2.Data</Name>
+      <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TSchedule2.Solver\TSchedule2.Solver.csproj">
+    <ProjectReference Include="..\TSchedule2.Solver\Solver.csproj">
       <Project>{1ac68513-36ce-4d53-b760-ad0c5c65ce2b}</Project>
-      <Name>TSchedule2.Solver</Name>
+      <Name>Solver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{7868fd85-689e-4fd6-8406-df6dfcf83a0c}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

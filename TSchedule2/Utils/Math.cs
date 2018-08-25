@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TSchedule2.Data.Utils
+namespace Utils
 {
    public static class Math
    {
@@ -20,10 +20,18 @@ namespace TSchedule2.Data.Utils
          return a >= b ? a : b;
       }
 
-      public struct Period
+      public class Period
       {
+         public Period(DateTime start, DateTime end) {
+            Start = start;
+            End = end;
+         }
          public DateTime Start { get; set; }
          public DateTime End { get; set; }
+
+         public bool ContainsStriclty(DateTime time) {
+            return (time > Start && time < End);
+         }
       }
 
       public static bool Intersect(Period A, Period B) {
